@@ -52,6 +52,7 @@ public class SeatSelector {
 	}
 	
 	public String getSelectedSeat() {
+		// TODO : add functionality of selecting multiple seats (if required)
 		while (true) {
 			showSeats();
 			Scanner sc = new Scanner(System.in);
