@@ -6,6 +6,9 @@ import General.Movie;
 import Admin.Login;
 import Admin.ModifyMovie;
 import Admin.TicketPrice;
+//Booking imports
+import Booking.Cineplex;
+import Booking.SeatSelector;
 
 // TODO : close all the scanner objs
 
@@ -109,7 +112,7 @@ public class Main {
 			}
 		}
 		
-		if(staff = false) {
+		if(staff == false) {
 			// assuming it's the moviegoer
 			/* Moviegoer
 			 * 1. Book movie (movie -> cineplex -> cinema -> details[day, time] -> seat -> enter personal details -> confirmation[add movie to db for history access])
@@ -117,6 +120,27 @@ public class Main {
 			 * 3. Leave Reviews (only for movies seen already by user)
 			 * */
 			
+			//assuming movie booking
+			// 1. choose movie
+			// 2. choose cineplex, cinema, get daytime
+			String[] cineplexLocations = new String[] {"Location 1", "Location 2", "Location 3"}; // TODO : load locations from db
+			System.out.println("Choose cineplex location");
+			for (Integer i=1; i<= cineplexLocations.length; i+=1) {
+				System.out.println(i.toString() + ") "+ cineplexLocations[i-1]);
+			}
+			sc = new Scanner(System.in);
+			int choice = sc.nextInt();
+			// TODO : error message if incorrect choice
+			Cineplex cineplex = new Cineplex(cineplexLocations[choice-1]);
+			
+			// 5. get seat
+			SeatSelector ss = new SeatSelector();
+			String seatChosen = ss.getSelectedSeat();
+			
+			System.out.println(cineplex.cineplexLocation+", "+ cineplex.cinema.cinematype+", "+ cineplex.cinema.cost.toString()+", "+cineplex.cinema.day+", "+cineplex.cinema.time );
+			System.out.println("Seat chosen:"+seatChosen);
+			
+			//make a ticket class, which gets the user info and sets the price
 		}
 
 	}
