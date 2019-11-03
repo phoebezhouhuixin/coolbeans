@@ -66,7 +66,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
                     switch (update_choice) {
                         case 1:
                             allMovies.get(i).setTitle();
-                            System.out.println("Successfully updated!");
+                            System.out.println("Successfully updated! ");
                             break;
                         case 2:
                             allMovies.get(i).setDirector();

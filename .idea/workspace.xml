@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/Admin/Login.java" line="6" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0ce8a74-3baf-4de8-af53-cb6d424badc7" name="Default Changelist" comment="" />
+    <list default="true" id="d0ce8a74-3baf-4de8-af53-cb6d424badc7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Admin/ModifyMovie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/ModifyMovie.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,10 +38,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Admin/ModifyMovie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
+            <state relative-caret-position="393">
+              <caret line="68" column="70" selection-start-line="68" selection-start-column="70" selection-end-line="68" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1328#1336#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -211,6 +214,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -238,15 +242,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572746384354</updated>
-      <workItem from="1572746388130" duration="12444000" />
+      <workItem from="1572746388130" duration="12589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12444000" />
+    <option name="totallyTimeSpent" value="12589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -373,10 +378,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Admin/ModifyMovie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
+        <state relative-caret-position="393">
+          <caret line="68" column="70" selection-start-line="68" selection-start-column="70" selection-end-line="68" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1328#1336#0" expanded="true" />
           </folding>
         </state>
       </provider>
