@@ -1,10 +1,11 @@
 package General;
 
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Movie {
-    Scanner sc3 = new Scanner(System.in);
+//    Scanner sc3 = new Scanner(System.in);
     private String title, synopsis, director,language;
     private ArrayList<String> castArray = new ArrayList<String>();
     private StatusEnum showingStatus;
@@ -23,18 +24,22 @@ public class Movie {
         castArray = theNames;
     }
     public void setTitle(){
+    	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie title: ");
         this.title = sc3.nextLine();
     }
     public void setSynopsis(){
+    	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie synopsis: ");
         this.synopsis = sc3.nextLine();
     }
     public void setDirector(){
+    	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie director: ");
         this.director = sc3.nextLine();
     }
     public void setRuntime(){
+    	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie runtime: ");
         this.runtime = sc3.nextInt();
     }
@@ -43,8 +48,9 @@ public class Movie {
         showingStatus = StatusEnum.values()[theStatus-1];
     }
     public void setLanguage(){
-        System.out.println("Enter the movie language");
-        language = sc3.nextLine();
+    	Scanner sc3 = new Scanner(System.in);
+        System.out.println("Enter the movie language: ");
+        this.language = sc3.next();
     }
     public String getTitle(){
         return title;

@@ -5,9 +5,11 @@ import General.*;
 
 public class ModifyMovie { // call the setters of General.Movie.java
     int numberOfMovies = 0;
-    Scanner sc2 = new Scanner(System.in);
-    // todo : create a main to initialize allMovies
+//    Scanner sc2 = new Scanner(System.in);
+    ArrayList<Movie> allMovies;
+    // TODO : create a main to initialize allMovies
     public void createMovie(ArrayList<Movie> allMovies){
+    	Scanner sc2 = new Scanner(System.in);
         System.out.println("Enter movie title: ");
         String theTitle = sc2.nextLine();
         Movie newMovie = new Movie(theTitle);
@@ -31,21 +33,26 @@ public class ModifyMovie { // call the setters of General.Movie.java
         ArrayList<String> theNames = new ArrayList<String>();
         do {
             theName = sc2.nextLine();
-            if (theName != "0")
+            if (theName.equals("0")==false)
                 theNames.add(theName);
-        } while (theName != "0");
+            else break;
+        } while (theName.equals("0")==false);
+        
         newMovie.setCast(theNames);
         addNewMovieToArray(newMovie,allMovies);
+        this.allMovies = allMovies;
     }
     public void addNewMovieToArray(Movie newMovie , ArrayList<Movie> allMovies){
         this.numberOfMovies+=1;
         allMovies.add(newMovie); // DO SOMETHING ABOUT THIS LOL
+        this.allMovies = allMovies;
     }
     public void updateExistingMovieInArray(String check_by_title, ArrayList<Movie> allMovies){
+    	Scanner sc2 = new Scanner(System.in);
         int update_choice=0;
-        for (int i =0; i<= numberOfMovies; i+=1){
-            if (allMovies.get(i).getTitle() == check_by_title) {
-                // todo : do the updation
+        for (int i =0; i < allMovies.size(); i+=1){
+            if (allMovies.get(i).getTitle().equals(check_by_title)) {
+                // TODO : do the updation
                 System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Exit");
                 update_choice = sc2.nextInt();
                 while (update_choice != 6){
@@ -79,22 +86,30 @@ public class ModifyMovie { // call the setters of General.Movie.java
                         default:
                             System.out.println("Invalid choice. Choose between 1 to 5.");
                     }
+                    System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Exit");
                     update_choice = sc2.nextInt();
                 }
 
             }
 
         }
-
+        this.allMovies = allMovies;
     }
+    
+    public ArrayList<Movie> getAllMovies(){
+    	return this.allMovies;
+    }
+    
     public void removeMovieInArray(String check_by_title, ArrayList<Movie> allMovies) {
-        for (int i = 0; i <= numberOfMovies; i += 1) {
-            if (allMovies.get(i).getTitle() == check_by_title) {
-                allMovies.get(i).setShowingStatus(4);
+        for (int i = 0; i < numberOfMovies; i += 1) {
+            if (allMovies.get(i).getTitle().equals(check_by_title)) {
+            	allMovies.get(i).setShowingStatus(4);
             }
         }
+        this.allMovies = allMovies;
     }
     public void displayMovieRanking(ArrayList<Movie> allMovies){
+    	Scanner sc2 = new Scanner(System.in);
         int display_choice = 0;
         System.out.println("Enter ranking criteria: 1.Ticket Sales 2.Review Ratings ");
         display_choice = sc2.nextInt();
@@ -108,5 +123,6 @@ public class ModifyMovie { // call the setters of General.Movie.java
                     map.put(aMovie.getTitle(), aMovie.calcOverallRating(aMovie.getReviewArray()));
                 }
         }
+        this.allMovies = allMovies;
     }
 }
