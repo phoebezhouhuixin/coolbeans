@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
-// todo : close all the scanner objs
-
-
+// TODO : close all the scanner objs
 
 public class Main {
 
@@ -26,7 +24,7 @@ public class Main {
 		String username = login.getusername();
 		String password = login.getpassword();
 		System.out.println(username + " : " + password);
-		// todo: verify username and password recieved
+		// TODO: verify username and password recieved
 
 		// assuming staff
 		int choice1 = 0, choice2 = 0;
