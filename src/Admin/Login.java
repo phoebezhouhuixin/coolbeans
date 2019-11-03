@@ -11,13 +11,11 @@ public class Login {
     }
     public void setusername(){
         System.out.println("Please enter username: ");
-        username = sc1.nextLine(); // takes in newline, therefore no need to clear input buffer
-        this.username = username;
+        this.username = sc1.nextLine(); // takes in newline, therefore no need to clear input buffer
     }
     public void setpassword(){
         System.out.println("Please enter password: ");
-        password = sc1.nextLine(); // takes in newline, therefore no need to clear input buffer
-        this.password = password;
+        this.password = sc1.nextLine(); // takes in newline, therefore no need to clear input buffer
     }
     public String getusername(){
         return this.username;
