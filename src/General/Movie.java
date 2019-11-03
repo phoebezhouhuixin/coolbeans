@@ -24,23 +24,19 @@ public class Movie {
     }
     public void setTitle(){
         System.out.println("Enter the movie title: ");
-        title = sc3.nextLine();
-        this.title = title;
+        this.title = sc3.nextLine();
     }
     public void setSynopsis(){
         System.out.println("Enter the movie synopsis: ");
-        synopsis = sc3.nextLine();
-        this.synopsis = synopsis;
+        this.synopsis = sc3.nextLine();
     }
     public void setDirector(){
         System.out.println("Enter the movie director: ");
-        director = sc3.nextLine();
-        this.director = director;
+        this.director = sc3.nextLine();
     }
     public void setRuntime(){
         System.out.println("Enter the movie runtime: ");
-        runtime = sc3.nextInt();
-        this.runtime = runtime;
+        this.runtime = sc3.nextInt();
     }
     public void setShowingStatus(int theStatus){
 
