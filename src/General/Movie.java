@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Movie {
 //    Scanner sc3 = new Scanner(System.in);
-    private String title, synopsis, director,language;
+    private String title, synopsis, director,language,type,PGrating;
     private ArrayList<String> castArray = new ArrayList<String>();
     private StatusEnum showingStatus;
     private int runtime;
@@ -33,6 +33,16 @@ public class Movie {
         System.out.println("Enter the movie synopsis: ");
         this.synopsis = sc3.nextLine();
     }
+    public void setType(){
+    	Scanner sc3 = new Scanner(System.in);
+        System.out.println("Enter the movie type among 2D, 3D and Blockbuster: ");
+        this.type = sc3.nextLine();
+    }
+    public void setPGrating(){
+    	Scanner sc3 = new Scanner(System.in);
+        System.out.println("Enter the movie rating among G,PG,PG-13 and R");
+        this.PGrating = sc3.nextLine();
+    }
     public void setDirector(){
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie director: ");
@@ -58,8 +68,15 @@ public class Movie {
     public StatusEnum getShowingStatus(){
         return showingStatus;
     }
+    
     public String getSynopsis(){
         return synopsis;
+    }
+    public String getType(){
+        return type;
+    }
+    public String getPGrating(){
+        return PGrating;
     }
     public String getDirector(){
         return director;

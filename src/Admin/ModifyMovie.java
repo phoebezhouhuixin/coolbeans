@@ -17,6 +17,8 @@ public class ModifyMovie { // call the setters of General.Movie.java
         newMovie.setDirector();
         newMovie.setRuntime();
         newMovie.setLanguage();
+        newMovie.setType();
+        newMovie.setPGrating();
 
 
         System.out.println("Enter movie showing status: ");
@@ -53,9 +55,9 @@ public class ModifyMovie { // call the setters of General.Movie.java
         for (int i =0; i < allMovies.size(); i+=1){
             if (allMovies.get(i).getTitle().equals(check_by_title)) {
                 // TODO : do the updation
-                System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Exit");
+                System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Type 7. PGRating 8.Exit");
                 update_choice = sc2.nextInt();
-                while (update_choice != 6){
+                while (update_choice != 7){
                     switch (update_choice) {
                         case 1:
                             allMovies.get(i).setTitle();
@@ -83,10 +85,18 @@ public class ModifyMovie { // call the setters of General.Movie.java
                             allMovies.get(i).setLanguage();
                             System.out.println("Successfully updated!");
                             break;
+                        case 6:
+                        	allMovies.get(i).setType();
+                            System.out.println("Successfully updated!");
+                            break;
+                        case 7:
+                        	allMovies.get(i).setPGrating();;
+                            System.out.println("Successfully updated!");
+                            break;
                         default:
                             System.out.println("Invalid choice. Choose between 1 to 5.");
                     }
-                    System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Exit");
+                    System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Type 7. PGRating 8.Exit");
                     update_choice = sc2.nextInt();
                 }
 
