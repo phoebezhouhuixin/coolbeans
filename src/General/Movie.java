@@ -11,21 +11,13 @@ public class Movie {
     private int runtime;
 
     // not in the constructor
-    private ArrayList<Review> reviewArray = new ArrayList<Review>();
+    private ArrayList<Review> reviewArray = new ArrayList<Review>(); // created by default every time we create a new movie.
     private double overallrating;
 
     // implement all the constructors, getters and setters later
     // constructor
     public Movie(String theTitle){
-            //, int theStatus, String theSynopsis, String theDirector, String theLanguage, ArrayList theNames){
-        title = theTitle;
-    /*
-        showingStatus = StatusEnum.values()[theStatus-1];
-        director = theDirector;
-        language = theLanguage;
-        synopsis = theSynopsis;
-        castArray = theNames;*/
-
+         title = theTitle;
     }
     public void setCast(ArrayList<String> theNames){
         castArray = theNames;
@@ -50,13 +42,8 @@ public class Movie {
         runtime = sc3.nextInt();
         this.runtime = runtime;
     }
-    public void setShowingStatus(){
-        System.out.println("Enter movie showing status: ");
-        System.out.println("1: Coming soon");
-        System.out.println("2: Preview");
-        System.out.println("3: Now showing");
-        System.out.println("4: End of showing");
-        int theStatus = sc3.nextInt();
+    public void setShowingStatus(int theStatus){
+
         showingStatus = StatusEnum.values()[theStatus-1];
     }
     public void setLanguage(){
@@ -83,6 +70,14 @@ public class Movie {
     }
     public ArrayList<Review> getReviewArray() {
         return reviewArray;
+    }
+    public double calcOverallRating(ArrayList<Review> reviewArray){
+        int sum = 0;
+        for (Review aReview: reviewArray){
+            sum+= aReview.getRating();
+        }
+        overallrating= sum/reviewArray.size();
+        return overallrating;
     }
 
 }
