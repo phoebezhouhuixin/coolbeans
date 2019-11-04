@@ -1,0 +1,2 @@
+id, Location1, Location2, Location3, Location4
+1,Golden Village, PVR Cinemas, Pioneer Cinema, Serangoon Cinema

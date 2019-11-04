@@ -47,7 +47,7 @@ public class FileDb {
 				else {
 					for (int i = 0; i<colNames.size(); i+=1) {
 						//using each colName we previously got to be the key for it's column values
-						map.put(colNames.get(i), row[i]);
+						map.put(colNames.get(i).trim(), row[i].trim());
 					}
 					data.add(map);
 				}		

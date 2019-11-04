@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Map;
+
 //General imports
 import General.Movie;
 //Admin imports
@@ -9,6 +11,9 @@ import Admin.TicketPrice;
 //Booking imports
 import Booking.Cineplex;
 import Booking.SeatSelector;
+//fileDb import
+import fileDb.FileDb;
+
 
 // TODO : close all the scanner objs
 
@@ -29,7 +34,7 @@ public class Main {
 		String username = login.getusername();
 		String password = login.getpassword();
 		System.out.println(username + " : " + password);
-		// TODO: verify username and password recieved
+		// TODO: verify username and password recieved from db
 		boolean staff = false;
 		if (staff == true) {
 			// assuming staff
@@ -123,7 +128,13 @@ public class Main {
 			//assuming movie booking
 			// 1. choose movie
 			// 2. choose cineplex, cinema, get daytime
-			String[] cineplexLocations = new String[] {"Location 1", "Location 2", "Location 3"}; // TODO : load locations from db
+			
+			//loading cineplex locations from db
+			FileDb cineplexDb = new FileDb();
+			cineplexDb.setDbName("cineplexLocations");
+			Map<String,String> cpData = cineplexDb.readDataBase("cineplexLocations").get(0);
+
+			String[] cineplexLocations = new String[] {cpData.get("Location1"), cpData.get("Location2"), cpData.get("Location3"), cpData.get("Location4")}; // TODO : load locations from db
 			System.out.println("Choose cineplex location");
 			for (Integer i=1; i<= cineplexLocations.length; i+=1) {
 				System.out.println(i.toString() + ") "+ cineplexLocations[i-1]);
@@ -140,7 +151,7 @@ public class Main {
 			System.out.println(cineplex.cineplexLocation+", "+ cineplex.cinema.cinematype+", "+ cineplex.cinema.cost.toString()+", "+cineplex.cinema.day+", "+cineplex.cinema.time );
 			System.out.println("Seat chosen:"+seatChosen);
 			
-			//make a ticket class, which gets the user info and sets the price
+			//TODO : make a ticket class, which gets the user info and sets the price
 		}
 
 	}
