@@ -1,0 +1,7 @@
+type, username, password
+moviegoer, rohan, beans
+moviegoer, r,b
+moviegoer, r,r
+moviegoer, g,g
+staff, bob, pass
+staff, s,s
