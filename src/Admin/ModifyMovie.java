@@ -7,7 +7,6 @@ public class ModifyMovie { // call the setters of General.Movie.java
     int numberOfMovies = 0;
 //    Scanner sc2 = new Scanner(System.in);
     ArrayList<Movie> allMovies;
-    // TODO : create a main to initialize allMovies
     public void createMovie(ArrayList<Movie> allMovies){
     	Scanner sc2 = new Scanner(System.in);
         System.out.println("Enter movie title: ");
@@ -54,7 +53,6 @@ public class ModifyMovie { // call the setters of General.Movie.java
         int update_choice=0;
         for (int i =0; i < allMovies.size(); i+=1){
             if (allMovies.get(i).getTitle().equals(check_by_title)) {
-                // TODO : do the updation
                 System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Type 7. PGRating 8.Exit");
                 update_choice = sc2.nextInt();
                 while (update_choice != 7){

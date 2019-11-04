@@ -24,6 +24,7 @@ public class Cinema {
 	}
 	
 	public void getDayTime() {
+		// TODO: accept details in specified formats 
 		System.out.print("Enter Day : ");
 		Scanner sc = new Scanner(System.in);
 		this.day = sc.next();
