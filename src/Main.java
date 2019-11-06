@@ -181,6 +181,7 @@ public class Main {
 			Ticket t = new Ticket(cineplex);
 			Double ticketPrice = t.getTicketPrice();
 			System.out.println("Ticketprice is :"+ ticketPrice.toString());
+			// TODO : store final confirmation details in db, build history viewing after you load things from db
 		}
 
 	}
