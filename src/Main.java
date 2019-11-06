@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
+
 //General imports
 import General.Movie;
+import Moviegoer.ViewHistory;
 //Admin imports
 import Admin.Login;
 import Admin.ModifyMovie;
@@ -145,6 +147,7 @@ public class Main {
 		}
 
 		if (staff == false && auth) {
+			
 			// assuming it's the moviegoer
 			/*
 			 * Moviegoer 1. Book movie (movie -> cineplex -> cinema -> details[day, time] ->
@@ -152,16 +155,24 @@ public class Main {
 			 * access]) 2. View history (from historydb) 3. Leave Reviews (only for movies
 			 * seen already by user)
 			 */
-
+			int choice3=0;
+			System.out.println("What do you wish to do? 1. Book Tickets 2. View History 3.Leave Review ");
+			choice3 = sc.nextInt();
+			if (choice3==2){
+				ViewHistory vh = new ViewHistory();
+				vh.view();
+			}
+			
 			// assuming movie booking
 			//TODO : multiple bookings
 			while (true) {
 				// 1. choose movie
+				
 				System.out.println("Welcome to movie booking system!");
-				// TODO : show a list of movies??
+				
 				ChooseMovie choiceofmovie = new ChooseMovie();
 				choiceofmovie.choice(allMovies);
-				// 2. choose cineplex, cinema, get daytime
+				//2. choose cineplex, cinema, get daytime
 				// loading cineplex locations from db
 				FileDb cineplexDb = new FileDb();
 				cineplexDb.setDbName("cineplexLocations");
@@ -173,7 +184,7 @@ public class Main {
 				for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
 					System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
 				}
-				sc = new Scanner(System.in);
+				//sc = new Scanner(System.in);
 				int choice = sc.nextInt();
 				sc.nextLine();
 				// TODO : error message if incorrect choice
@@ -196,14 +207,20 @@ public class Main {
 				history.setDbName("history");
 				String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
 				history.addRecord(record);
-				sc.close();
-				Scanner sc2 = new Scanner(System.in);
-				System.out.println("Book another seat? (y/n):");
-				String cfm = null;
-				cfm = sc2.next();
-				if (cfm.toLowerCase().equals("n")) {
-					break;
+				//sc.close();
+				//Scanner sc2 = new Scanner(System.in);
+				System.out.println();
+				while (sc.hasNext()){
+					System.out.println("Book another seat? (yes/no):");
+				
+					System.out.print("YES");
+					String cfm = sc.next();
+					
+					
 				}
+				/*if (cfm.toLowerCase().equals("no")) {
+					break;
+				}*/
 			}
 			
 			// TODO: make history viewing part
