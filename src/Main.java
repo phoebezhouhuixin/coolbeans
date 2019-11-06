@@ -4,12 +4,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Map;
 
+
 //General imports
 import General.Movie;
 //Admin imports
 import Admin.Login;
 import Admin.ModifyMovie;
 import Admin.TicketPrice;
+import Booking.ChooseMovie;
 //Booking imports
 import Booking.Cineplex;
 import Booking.SeatSelector;
@@ -153,7 +155,10 @@ public class Main {
 
 			// assuming movie booking
 			//TODO : multiple bookings
-			// 1. TODO : choose movie
+			// 1. choose movie
+			System.out.println("Welcome to movie booking system!");
+			ChooseMovie choiceofmovie = new ChooseMovie();
+			choiceofmovie.choice(allMovies);
 			// 2. choose cineplex, cinema, get daytime
 
 			// loading cineplex locations from db
@@ -184,7 +189,7 @@ public class Main {
 			Ticket t = new Ticket(cineplex);
 			Double ticketPrice = t.getTicketPrice();
 			System.out.println("Ticketprice is :"+ ticketPrice.toString());
-			// TODO : store final confirmation details in db, build history viewing after you load things from db
+			// store final confirmation details in db, build history viewing after you load things from db
 			FileDb history = new FileDb();
 			history.setDbName("history");
 			String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
