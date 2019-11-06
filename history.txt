@@ -21,3 +21,4 @@ r,r,1,2,1,Platinum,null,2D,child,weekday,20.0,Gol201911070035
 r,r,1,1,1,Platinum,null,2D,child,weekday,20.0,Gol201911070036
 r,r,1,1,1,Platinum,null,2D,child,weekday,20.0,Gol201911070042
 r,r,1,1,1,Platinum,null,2D,child,weekday,20.0,Gol201911070044
+r,r,e,e,e,Platinum,r,2D,child,weekday,20.0,Gol201911070054

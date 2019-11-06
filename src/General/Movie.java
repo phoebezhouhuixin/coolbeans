@@ -27,31 +27,37 @@ public class Movie {
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie title: ");
         this.title = sc3.nextLine();
+        sc3.close();
     }
     public void setSynopsis(){
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie synopsis: ");
         this.synopsis = sc3.nextLine();
+        sc3.close();
     }
     public void setType(){
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie type among 2D, 3D and Blockbuster: ");
         this.type = sc3.nextLine();
+        sc3.close();
     }
     public void setPGrating(){
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie rating among G,PG,PG-13 and R");
         this.PGrating = sc3.nextLine();
+        sc3.close();
     }
     public void setDirector(){
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie director: ");
         this.director = sc3.nextLine();
+        sc3.close();
     }
     public void setRuntime(){
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie runtime: ");
         this.runtime = sc3.nextInt();
+        sc3.close();
     }
     public void setShowingStatus(int theStatus){
 
@@ -61,6 +67,7 @@ public class Movie {
     	Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie language: ");
         this.language = sc3.next();
+        sc3.close();
     }
     public String getTitle(){
         return title;

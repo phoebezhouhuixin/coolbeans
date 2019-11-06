@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -33,7 +31,7 @@ public class Main {
 		 */
 
 		ArrayList<Movie> allMovies = new ArrayList<Movie>();
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		Login login = new Login();
 		login.setusername();
 		login.setpassword();
@@ -64,9 +62,10 @@ public class Main {
 		if (auth == false) {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
-
+//		sc.close();
 		
 		if (staff == true && auth) {
+			Scanner sc1 = new Scanner(System.in);
 			// assuming staff
 			int choice1 = 0, choice2 = 0, choice3 = 0;
 			ModifyMovie modify = new ModifyMovie();
@@ -80,11 +79,11 @@ public class Main {
 				System.out.println("3. Configure system settings");
 				System.out.println("4. view allmovies arraylist");
 				System.out.println("5. Quit");
-				choice1 = sc.nextInt();
+				choice1 = sc1.nextInt();
 				switch (choice1) {
 				case 1:
 					System.out.println("What do you wish to do: 1.Create 2.Update 3.Remove 4.View ranking");
-					choice2 = sc.nextInt();
+					choice2 = sc1.nextInt();
 					switch (choice2) {
 					case 1:
 						modify.createMovie(allMovies);
@@ -92,14 +91,14 @@ public class Main {
 						break;
 					case 2:
 						System.out.println("Enter the name of the movie that you wish to update: ");
-						sc = new Scanner(System.in);
-						check_by_title = sc.nextLine();
+//						sc = new Scanner(System.in);
+						check_by_title = sc1.nextLine();
 						modify.updateExistingMovieInArray(check_by_title, allMovies);
 						break;
 					case 3:
 						System.out.println("Enter the name of the movie that you wish to remove: ");
-						sc = new Scanner(System.in);
-						check_by_title = sc.nextLine();
+//						sc = new Scanner(System.in);
+						check_by_title = sc1.nextLine();
 						modify.removeMovieInArray(check_by_title, allMovies);
 						break;
 					case 4:
@@ -110,7 +109,7 @@ public class Main {
 				case 3:
 					System.out.println(
 							"Do you wish to change the price for: 1. Type of movie 2. Type of cinema 3. Type of movie goer 4. Type of day ");
-					choice3 = sc.nextInt();
+					choice3 = sc1.nextInt();
 					switch (choice3) {
 					case 1:
 						tp.tpmovietype();
@@ -144,10 +143,11 @@ public class Main {
 					break;
 				}
 			}
+			sc1.close();
 		}
 
 		if (staff == false && auth) {
-			
+			Scanner sc2 = new Scanner(System.in);
 			// assuming it's the moviegoer
 			/*
 			 * Moviegoer 1. Book movie (movie -> cineplex -> cinema -> details[day, time] ->
@@ -157,7 +157,8 @@ public class Main {
 			 */
 			int choice3=0;
 			System.out.println("What do you wish to do? 1. Book Tickets 2. View History 3.Leave Review ");
-			choice3 = sc.nextInt();
+			choice3 = sc2.nextInt();
+			sc2.nextLine();
 			if (choice3==2){
 				ViewHistory vh = new ViewHistory();
 				vh.view();
@@ -165,6 +166,7 @@ public class Main {
 			
 			// assuming movie booking
 			//TODO : multiple bookings
+			
 			while (true) {
 				// 1. choose movie
 				
@@ -184,9 +186,9 @@ public class Main {
 				for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
 					System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
 				}
-				//sc = new Scanner(System.in);
-				int choice = sc.nextInt();
-				sc.nextLine();
+				
+				int choice = sc2.nextInt();
+				sc2.nextLine();
 				// TODO : error message if incorrect choice
 				Cineplex cineplex = new Cineplex(cineplexLocations[choice - 1]);
 
@@ -207,23 +209,21 @@ public class Main {
 				history.setDbName("history");
 				String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
 				history.addRecord(record);
-				//sc.close();
-				//Scanner sc2 = new Scanner(System.in);
-				System.out.println();
-				while (sc.hasNext()){
-					System.out.println("Book another seat? (yes/no):");
 				
-					System.out.print("YES");
-					String cfm = sc.next();
-					
-					
+				System.out.println("Book another seat? (y/n):");
+//				while (!sc2.hasNext()) {
+//					//wait until it has next
+//				}
+				String cfm = sc2.nextLine();
+				if (cfm.toLowerCase().equals("n")) {
+					break;
 				}
 				/*if (cfm.toLowerCase().equals("no")) {
 					break;
 				}*/
 			}
-			
-			// TODO: make history viewing part
+			sc2.close();
+			//TODO: Add previously selected seat when booking another seat. Accordingly modify history to reflect payment of multiple tx
 		}
 
 	}

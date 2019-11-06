@@ -3,8 +3,8 @@ package Admin;
 import java.util.Scanner;
 
 public class Login {
+	Scanner sc1 = new Scanner (System.in);
     private String username, password;
-    Scanner sc1 = new Scanner (System.in);
     public void Admin(String username, String password){
         this.username = username;
         this.password = password;
