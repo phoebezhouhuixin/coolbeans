@@ -86,11 +86,11 @@ public class TicketPrice {
 
 	public void agecinema() {
 		double student = 4.00, senior = 3.00, child = 2.00;
-
+		int age_choice = 0;
 		System.out.println("Which age group:");
 		System.out.println("1.Child 2.Senior 3.Student");
-		cinema_choice = sc.nextInt();
-		switch (cinema_choice) {
+		age_choice = sc.nextInt();
+		switch (age_choice) {
 		case 1:
 			System.out.println("Current price is: "+child+", Enter the Child price: ");
 			student = sc.nextDouble();
@@ -117,11 +117,11 @@ public class TicketPrice {
 
 	public void daycinema() {
 		double weekdays = 4.00, weekends = 5.00, holidays = 6.00;
-
+		int day_choice = 0;
 		System.out.println("Which day:");
 		System.out.println("1.Weekdays 2.Weekends 3.Holidays");
-		cinema_choice = sc.nextInt();
-		switch (cinema_choice) {
+		day_choice = sc.nextInt();
+		switch (day_choice) {
 		case 1:
 			System.out.println("Current price is: "+weekdays+", Enter the Weekdays price: ");
 			weekdays = sc.nextDouble();

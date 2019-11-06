@@ -11,6 +11,7 @@ import Admin.TicketPrice;
 //Booking imports
 import Booking.Cineplex;
 import Booking.SeatSelector;
+import Booking.Ticket;
 //fileDb import
 import fileDb.FileDb;
 
@@ -111,7 +112,6 @@ public class Main {
 						break;
 					case 2:
 						tp.tpcinema();
-						;
 						System.out.println("Price has been changed!");
 						break;
 					case 3:
@@ -150,7 +150,7 @@ public class Main {
 			 */
 
 			// assuming movie booking
-			// 1. choose movie
+			// 1. TODO : choose movie
 			// 2. choose cineplex, cinema, get daytime
 
 			// loading cineplex locations from db
@@ -177,7 +177,10 @@ public class Main {
 					+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
 			System.out.println("Seat chosen:" + seatChosen);
 
-			// TODO : make a ticket class, which gets the user info and sets the price
+			//ticket class, which gets the user info and sets the price
+			Ticket t = new Ticket(cineplex);
+			Double ticketPrice = t.getTicketPrice();
+			System.out.println("Ticketprice is :"+ ticketPrice.toString());
 		}
 
 	}
