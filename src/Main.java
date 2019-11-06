@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -150,6 +152,7 @@ public class Main {
 			 */
 
 			// assuming movie booking
+			//TODO : multiple bookings
 			// 1. TODO : choose movie
 			// 2. choose cineplex, cinema, get daytime
 
@@ -182,6 +185,10 @@ public class Main {
 			Double ticketPrice = t.getTicketPrice();
 			System.out.println("Ticketprice is :"+ ticketPrice.toString());
 			// TODO : store final confirmation details in db, build history viewing after you load things from db
+			FileDb history = new FileDb();
+			history.setDbName("history");
+			String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
+			history.addRecord(record);
 		}
 
 	}

@@ -1,0 +1,2 @@
+username, password, name, phNo, email, cinemaType, movieType, ageType, dayType, price, txnId
+r,r,rohan,84230340,rohan1gautam@gmail.com,Gold,3D,child,weekend,23.0,Gol201911062146
