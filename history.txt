@@ -7,3 +7,11 @@ r,r,r,4,r4,Gold,r,3D,senior,weekend,24.0,PVR201911062247
 r,r,r,4324,re,Gold,r,Blockbuster,senior,weekend,27.0,PVR201911062254
 r,r,ee,232,eee3,Gold,null,Blockbuster,senior,weekend,27.0,PVR201911062254
 r,r,r,31,r,Gold,null,3D,senior,weekend,24.0,PVR201911062255
+r,r,r,3,eeee,Gold,r,3D,senior,weekend,24.0,PVR201911062317
+r,r,r,r,r,Silver,null,3D,senior,weekend,24.0,Pio201911062324
+r,r,r,r,r,Gold,4,3D,senior,weekend,24.0,PVR201911062326
+r,r,r,3,f,Silver,null,Blockbuster,student,holiday,29.0,Pio201911062330
+r,r,r,431,rrr,Gold,null,Blockbuster,student,weekend,28.0,Gol201911070040
+r,r,rr,23434,rrrr005,Gold,null,3D,senior,weekend,24.0,PVR201911070042
+r,r,ewr,324,rer@e,Gold,er,3D,student,weekend,25.0,Ser201911070044
+r,r,r,21323,rrr,Gold,null,3D,senior,weekend,24.0,Pio201911070045

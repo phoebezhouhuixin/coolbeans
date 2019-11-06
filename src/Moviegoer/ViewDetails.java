@@ -59,5 +59,6 @@ public class ViewDetails {
             	}
             }
 		}
+		sc5.close();
 	}
 }

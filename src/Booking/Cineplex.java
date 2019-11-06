@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Cineplex {
 	public String cineplexLocation;
 	public Cinema cinema;
+	Scanner sc = new Scanner(System.in);
 	
 	public Cineplex(String cineplex) {
 		this.cineplexLocation = cineplex;
@@ -30,8 +31,7 @@ public class Cineplex {
 		System.out.println("Choose Cinema");
 		for (Integer i=1; i<= cinematypes.size(); i+=1) {
 			System.out.println(i.toString() + ") "+ cinematypesKeys[i-1]);
-		}
-		Scanner sc = new Scanner(System.in);
+		}		
 		int choice = sc.nextInt();
 		// TODO : error message if incorrect choice
 		this.cinema = new Cinema(cinematypesKeys[choice-1], cinematypes.get(cinematypesKeys[choice-1]));

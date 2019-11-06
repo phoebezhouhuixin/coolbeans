@@ -8,6 +8,7 @@ public class Cinema {
 	public String day;
 	public String time;
 	
+	Scanner sc = new Scanner(System.in);
 	
 	public Cinema(String cinema, double cost) {
 		this.cinematype = cinema;
@@ -26,12 +27,10 @@ public class Cinema {
 	public void getDayTime() {
 		// TODO: accept details in specified formats 
 		System.out.print("Enter Day : ");
-		Scanner sc = new Scanner(System.in);
 		this.day = sc.next();
 		System.out.println();
 		
 		System.out.print("Enter time : ");
-		sc = new Scanner(System.in);
 		this.time = sc.next();
 		System.out.println();
 	}

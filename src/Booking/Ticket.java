@@ -45,7 +45,6 @@ public class Ticket {
 	}
 	
 	public void setTicketPriceAndInfo() {
-		Scanner sc = new Scanner(System.in);
 		//get movie type
 		int movietype_choice = 0;
 		System.out.println("Which movie type:");
@@ -85,7 +84,6 @@ public class Ticket {
 		this.phNo = sc.next();
 		System.out.println("Enter email:");
 		this.email = sc.next();
-		sc.close();
 	}
 	
 	public void setTransactionId() {

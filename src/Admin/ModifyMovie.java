@@ -42,6 +42,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
         newMovie.setCast(theNames);
         addNewMovieToArray(newMovie,allMovies);
         this.allMovies = allMovies;
+        sc2.close();
     }
     public void addNewMovieToArray(Movie newMovie , ArrayList<Movie> allMovies){
         this.numberOfMovies+=1;
@@ -102,6 +103,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
 
         }
         this.allMovies = allMovies;
+        sc2.close();
     }
     
     public ArrayList<Movie> getAllMovies(){
@@ -132,5 +134,6 @@ public class ModifyMovie { // call the setters of General.Movie.java
                 }
         }
         this.allMovies = allMovies;
+        sc2.close();
     }
 }

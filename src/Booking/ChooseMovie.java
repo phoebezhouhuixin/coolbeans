@@ -8,9 +8,10 @@ import java.util.Scanner;
 // hello
 public class ChooseMovie {
 	public String selected_movie = null;
+	Scanner sc7 = new Scanner(System.in);
 	public void choice(ArrayList<Movie> allMovies){
 		int choice1=0;		
-		Scanner sc7 = new Scanner(System.in);
+		
 		System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Continue ");
 		choice1 = sc7.nextInt();
 		sc7.nextLine();
@@ -32,7 +33,11 @@ public class ChooseMovie {
 			}
 			System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Continue ");
 			choice1 = sc7.nextInt();
+			sc7.nextLine();
 		}
+//		while (sc7.hasNextLine()) {
+//			sc7.nextLine();
+//		}
 	}
 }
 

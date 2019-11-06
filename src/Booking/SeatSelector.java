@@ -76,8 +76,10 @@ public class SeatSelector {
 			if (cfm.toLowerCase().equals("y")) {
 				break;
 			}
+			sc.close();
 		}
 //		System.out.println("You selected " + choice);
+		
 		return choice;
 	}
 }
