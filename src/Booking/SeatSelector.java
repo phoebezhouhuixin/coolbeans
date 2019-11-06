@@ -59,7 +59,17 @@ public class SeatSelector {
 			System.out.println("Enter seat choice");
 			choice = sc.next();
 			choice = choice.toUpperCase();
-			// TODO : check for valid seat choice
+			//check for valid seat choice
+			if (choice.charAt(0)<'A' || choice.charAt(0)>'Z'){
+				System.out.println("Re-enter choice with rows between A to Z");
+				choice = sc.next();
+				choice = choice.toUpperCase();
+			}
+			else if (choice.charAt(1)<0 ||choice.charAt(1)>9){
+				System.out.println("Re-enter choice with rows between A to Z");
+				choice = sc.next();
+				choice = choice.toUpperCase();
+			}
 			showSeats(choice);
 			System.out.println("Confirm? (y/n):");
 			String cfm = sc.next();
