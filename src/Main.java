@@ -155,45 +155,58 @@ public class Main {
 
 			// assuming movie booking
 			//TODO : multiple bookings
-			// 1. choose movie
-			System.out.println("Welcome to movie booking system!");
-			ChooseMovie choiceofmovie = new ChooseMovie();
-			choiceofmovie.choice(allMovies);
-			// 2. choose cineplex, cinema, get daytime
+			while (true) {
+				// 1. choose movie
+				System.out.println("Welcome to movie booking system!");
+				// TODO : show a list of movies??
+				ChooseMovie choiceofmovie = new ChooseMovie();
+				choiceofmovie.choice(allMovies);
+				// 2. choose cineplex, cinema, get daytime
+				// loading cineplex locations from db
+				FileDb cineplexDb = new FileDb();
+				cineplexDb.setDbName("cineplexLocations");
+				Map<String, String> cpData = cineplexDb.readDataBase("cineplexLocations").get(0);
 
-			// loading cineplex locations from db
-			FileDb cineplexDb = new FileDb();
-			cineplexDb.setDbName("cineplexLocations");
-			Map<String, String> cpData = cineplexDb.readDataBase("cineplexLocations").get(0);
+				String[] cineplexLocations = new String[] { cpData.get("Location1"), cpData.get("Location2"),
+						cpData.get("Location3"), cpData.get("Location4") }; // TODO : load locations from db
+				System.out.println("Choose cineplex location");
+				for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
+					System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
+				}
+				sc = new Scanner(System.in);
+				int choice = sc.nextInt();
+				sc.nextLine();
+				// TODO : error message if incorrect choice
+				Cineplex cineplex = new Cineplex(cineplexLocations[choice - 1]);
 
-			String[] cineplexLocations = new String[] { cpData.get("Location1"), cpData.get("Location2"),
-					cpData.get("Location3"), cpData.get("Location4") }; // TODO : load locations from db
-			System.out.println("Choose cineplex location");
-			for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
-				System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
+				// 5. get seat
+				SeatSelector ss = new SeatSelector();
+				String seatChosen = ss.getSelectedSeat();
+
+				System.out.println(cineplex.cineplexLocation + ", " + cineplex.cinema.cinematype + ", "
+						+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
+				System.out.println("Seat chosen:" + seatChosen);
+
+				//ticket class, which gets the user info and sets the price
+				Ticket t = new Ticket(cineplex);
+				Double ticketPrice = t.getTicketPrice();
+				System.out.println("Ticketprice is :"+ ticketPrice.toString());
+				// store final confirmation details in db, build history viewing after you load things from db
+				FileDb history = new FileDb();
+				history.setDbName("history");
+				String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
+				history.addRecord(record);
+				sc.close();
+				Scanner sc2 = new Scanner(System.in);
+				System.out.println("Book another seat? (y/n):");
+				String cfm = null;
+				cfm = sc2.next();
+				if (cfm.toLowerCase().equals("n")) {
+					break;
+				}
 			}
-			sc = new Scanner(System.in);
-			int choice = sc.nextInt();
-			// TODO : error message if incorrect choice
-			Cineplex cineplex = new Cineplex(cineplexLocations[choice - 1]);
-
-			// 5. get seat
-			SeatSelector ss = new SeatSelector();
-			String seatChosen = ss.getSelectedSeat();
-
-			System.out.println(cineplex.cineplexLocation + ", " + cineplex.cinema.cinematype + ", "
-					+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
-			System.out.println("Seat chosen:" + seatChosen);
-
-			//ticket class, which gets the user info and sets the price
-			Ticket t = new Ticket(cineplex);
-			Double ticketPrice = t.getTicketPrice();
-			System.out.println("Ticketprice is :"+ ticketPrice.toString());
-			// store final confirmation details in db, build history viewing after you load things from db
-			FileDb history = new FileDb();
-			history.setDbName("history");
-			String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
-			history.addRecord(record);
+			
+			// TODO: make history viewing part
 		}
 
 	}

@@ -7,12 +7,13 @@ import java.util.ArrayList;
 import java.util.Scanner; 
 // hello
 public class ChooseMovie {
+	public String selected_movie = null;
 	public void choice(ArrayList<Movie> allMovies){
-		int choice1=0;
-		String selected_movie = null;
+		int choice1=0;		
 		Scanner sc7 = new Scanner(System.in);
-		System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Exit ");
+		System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Continue ");
 		choice1 = sc7.nextInt();
+		sc7.nextLine();
 		while (choice1!=4){
 			switch(choice1){
 			case 1:
@@ -25,11 +26,11 @@ public class ChooseMovie {
 				break;
 			case 3:
 				System.out.println("Please enter the name of the movie you wish to watch: ");
-				selected_movie = sc7.next();
+				selected_movie = sc7.nextLine();
 				System.out.println("The movie you have chosen is: "+selected_movie);
 				break;
 			}
-			System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Exit ");
+			System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Continue ");
 			choice1 = sc7.nextInt();
 		}
 	}
