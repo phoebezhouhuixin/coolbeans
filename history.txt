@@ -1,2 +1,9 @@
-username, password, name, phNo, email, cinemaType, movieType, ageType, dayType, price, txnId
-r,r,rohan,84230340,rohan1gautam@gmail.com,Gold,3D,child,weekend,23.0,Gol201911062146
+username, password, name, phNo, email, cinemaType, movie, movieType, ageType, dayType, price, txnId
+r,r,rohan,5646421,rohan1gautam@gmail.com,Gold,ho,Blockbuster,senior,weekend,27.0,PVR201911062228
+r,r,rohn,343434343,r@f.com,Gold,toy story,Blockbuster,child,weekend,26.0,PVR201911062234
+r,r,r,43244,e@g.c,Gold,r,3D,senior,weekend,24.0,PVR201911062236
+r,r,r,324324,r@freygu.gay,Gold,rohan,3D,senior,weekend,24.0,PVR201911062242
+r,r,r,4,r4,Gold,r,3D,senior,weekend,24.0,PVR201911062247
+r,r,r,4324,re,Gold,r,Blockbuster,senior,weekend,27.0,PVR201911062254
+r,r,ee,232,eee3,Gold,null,Blockbuster,senior,weekend,27.0,PVR201911062254
+r,r,r,31,r,Gold,null,3D,senior,weekend,24.0,PVR201911062255

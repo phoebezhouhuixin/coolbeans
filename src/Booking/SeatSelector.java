@@ -66,7 +66,7 @@ public class SeatSelector {
 				choice = choice.toUpperCase();
 			}
 			else if (choice.charAt(1)<'0' ||choice.charAt(1)>'9'){
-				System.out.println("Re-enter choice with col between A to Z");
+				System.out.println("Re-enter choice with rows between A to Z");
 				choice = sc.next();
 				choice = choice.toUpperCase();
 			}
