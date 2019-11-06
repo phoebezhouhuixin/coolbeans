@@ -5,7 +5,7 @@ import Moviegoer.ViewDetails;
 
 import java.util.ArrayList;
 import java.util.Scanner; 
-
+// hello
 public class ChooseMovie {
 	public void choice(ArrayList<Movie> allMovies){
 		int choice1=0;
