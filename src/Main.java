@@ -224,6 +224,7 @@ public class Main {
 			}
 			sc2.close();
 			//TODO: Add previously selected seat when booking another seat. Accordingly modify history to reflect payment of multiple tx
+			// TODO: bring the while loop down lower so that it doesnt start from beginning all the time
 		}
 
 	}
