@@ -18,10 +18,12 @@ public class ChooseMovie {
 		while (choice1!=4){
 			switch(choice1){
 			case 1:
+				// TODO : this doesn't do anything!
 				Search s1 = new Search();
 				s1.display(allMovies);
 				break;
 			case 2:
+				// TODO : this doesn't do anything!
 				ViewDetails v1 = new ViewDetails();
 				v1.displaydetails(allMovies);
 				break;
