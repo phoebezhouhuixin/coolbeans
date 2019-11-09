@@ -9,7 +9,8 @@ public class Movie {
     private String title, synopsis, director,language,type,PGrating;
     private ArrayList<String> castArray = new ArrayList<String>();
     private StatusEnum showingStatus;
-    private int runtime;
+    private int runtime,type_choice,PGrating_choice;
+    Scanner sc = new Scanner (System.in);
 
     // not in the constructor
     private ArrayList<Review> reviewArray = new ArrayList<Review>(); // created by default every time we create a new movie.
@@ -24,50 +25,75 @@ public class Movie {
         castArray = theNames;
     }
     public void setTitle(){
-    	Scanner sc3 = new Scanner(System.in);
+    	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie title: ");
-        this.title = sc3.nextLine();
-        sc3.close();
+        this.title = sc.nextLine();
+        //sc3.close();
     }
     public void setSynopsis(){
-    	Scanner sc3 = new Scanner(System.in);
+    	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie synopsis: ");
-        this.synopsis = sc3.nextLine();
-        sc3.close();
+        this.synopsis = sc.nextLine();
+        //sc3.close();
     }
     public void setType(){
-    	Scanner sc3 = new Scanner(System.in);
-        System.out.println("Enter the movie type among 2D, 3D and Blockbuster: ");
-        this.type = sc3.nextLine();
-        sc3.close();
+    	//Scanner sc3 = new Scanner(System.in);
+        System.out.println("Enter number for choosing the movie type among: 1.2D  2.3D  3.Blockbuster: ");
+        this.type_choice = sc.nextInt();
+        switch(type_choice){
+        case 1:
+        	type = "TWO-D";
+        	break;
+        case 2:
+        	type = "THREE-D";
+        	break;
+        case 3:
+        	type = "BLOCKBUSTER";
+        	break;
+        }
+        //sc3.close();
     }
     public void setPGrating(){
-    	Scanner sc3 = new Scanner(System.in);
-        System.out.println("Enter the movie rating among G,PG,PG-13 and R");
-        this.PGrating = sc3.nextLine();
-        sc3.close();
+    	//Scanner sc3 = new Scanner(System.in);
+        System.out.println("Enter number for choosing the movie rating among 1.G  2.PG  3.PG-13 4.R");
+        this.PGrating_choice = sc.nextInt();
+        switch(PGrating_choice){
+        case 1:
+        	PGrating = "G";
+        	break;
+        case 2:
+        	PGrating = "PG";
+        	break;
+        case 3:
+        	PGrating = "PG-13";
+        	break;
+        case 4:
+        	PGrating = "R";
+        	break;
+        }
+        //sc3.close();
     }
     public void setDirector(){
-    	Scanner sc3 = new Scanner(System.in);
+    	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie director: ");
-        this.director = sc3.nextLine();
-        sc3.close();
+        this.director = sc.nextLine();
+        //sc3.close();
     }
     public void setRuntime(){
-    	Scanner sc3 = new Scanner(System.in);
+    	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie runtime: ");
-        this.runtime = sc3.nextInt();
-        sc3.close();
+        this.runtime = sc.nextInt();
+        //sc3.close();
     }
     public void setShowingStatus(int theStatus){
 
         showingStatus = StatusEnum.values()[theStatus-1];
     }
     public void setLanguage(){
-    	Scanner sc3 = new Scanner(System.in);
+    	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie language: ");
-        this.language = sc3.next();
-        sc3.close();
+        this.language = sc.next();
+        //sc3.close();
     }
     public String getTitle(){
         return title;
@@ -78,6 +104,9 @@ public class Movie {
     
     public String getSynopsis(){
         return synopsis;
+    }
+    public String getLanguage(){
+        return language;
     }
     public String getType(){
         return type;
