@@ -67,6 +67,9 @@ public class Main {
 			// assuming staff
 			int choice1 = 0, choice2 = 0, choice3 = 0;
 			ModifyMovie modify = new ModifyMovie();
+			/// >>testing<<
+//			modify.updateExistingMovieInArray("reere", allMovies);
+			///------------
 			TicketPrice tp = new TicketPrice();
 			boolean loopCtrl = true;
 			while (loopCtrl) {
