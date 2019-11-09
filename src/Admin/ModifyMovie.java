@@ -2,6 +2,7 @@ package Admin;
 import java.util.*;
 
 import General.*;
+import fileDb.FileDb;
 
 public class ModifyMovie { // call the setters of General.Movie.java
     int numberOfMovies = 0;
@@ -18,6 +19,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
         newMovie.setLanguage();
         newMovie.setType();
         newMovie.setPGrating();
+        
 
 
         System.out.println("Enter movie showing status: ");
@@ -41,12 +43,21 @@ public class ModifyMovie { // call the setters of General.Movie.java
         
         newMovie.setCast(theNames);
         addNewMovieToArray(newMovie,allMovies);
-        this.allMovies = allMovies;
+        this.allMovies = allMovies;        
         sc2.close();
     }
     public void addNewMovieToArray(Movie newMovie , ArrayList<Movie> allMovies){
         this.numberOfMovies+=1;
-        allMovies.add(newMovie); // DO SOMETHING ABOUT THIS LOL
+        allMovies.add(newMovie);
+        String cast = "";
+        for (String castMember : newMovie.getCast()) {
+        	cast += (castMember+";");
+        }
+
+        FileDb movieDb = new FileDb();        
+        movieDb.setDbName("movies");
+        String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType(), newMovie.getPGrating(), newMovie.getOverallRating().toString(), cast };
+        movieDb.addRecord(recordToAddToMovieDb);
         this.allMovies = allMovies;
     }
     public void updateExistingMovieInArray(String check_by_title, ArrayList<Movie> allMovies){

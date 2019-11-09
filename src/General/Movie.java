@@ -11,15 +11,14 @@ public class Movie {
     private StatusEnum showingStatus;
     private int runtime,type_choice,PGrating_choice;
     Scanner sc = new Scanner (System.in);
-
     // not in the constructor
     private ArrayList<Review> reviewArray = new ArrayList<Review>(); // created by default every time we create a new movie.
-    private double overallrating;
+    private Integer overallrating =0;
 
     // implement all the constructors, getters and setters later
     // constructor
     public Movie(String theTitle){
-         title = theTitle;
+        title = theTitle;
     }
     public void setCast(ArrayList<String> theNames){
         castArray = theNames;
@@ -113,6 +112,9 @@ public class Movie {
     }
     public String getPGrating(){
         return PGrating;
+    }
+    public Integer getOverallRating(){
+        return overallrating;
     }
     public String getDirector(){
         return director;
