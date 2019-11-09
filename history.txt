@@ -22,3 +22,4 @@ r,r,1,1,1,Platinum,null,2D,child,weekday,20.0,Gol201911070036
 r,r,1,1,1,Platinum,null,2D,child,weekday,20.0,Gol201911070042
 r,r,1,1,1,Platinum,null,2D,child,weekday,20.0,Gol201911070044
 r,r,e,e,e,Platinum,r,2D,child,weekday,20.0,Gol201911070054
+r,r,rr,234234,rertyoot,Platinum,null,Blockbuster,child,weekday,25.0,Gol201911092209

@@ -2,8 +2,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Map;
 
-
-
 //General imports
 import General.Movie;
 import Moviegoer.ViewHistory;
@@ -47,15 +45,15 @@ public class Main {
 		for (Map<String, String> user : authData) {
 			if (user.get("username").equals(username) && user.get("password").equals(password)) {
 				auth = true;
-				if(user.get("type").equals("moviegoer")) {
+				if (user.get("type").equals("moviegoer")) {
 					staff = false;
 					System.out.println("MovieGoer authenticated");
 				}
-				if(user.get("type").equals("staff")) {
+				if (user.get("type").equals("staff")) {
 					staff = true;
 					System.out.println("Staff authenticated");
 				}
-				
+
 				break;
 			}
 		}
@@ -63,7 +61,7 @@ public class Main {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
 //		sc.close();
-		
+
 		if (staff == true && auth) {
 			Scanner sc1 = new Scanner(System.in);
 			// assuming staff
@@ -155,26 +153,30 @@ public class Main {
 			 * access]) 2. View history (from historydb) 3. Leave Reviews (only for movies
 			 * seen already by user)
 			 */
-			int choice3=0;
-			System.out.println("What do you wish to do? 1. Book Tickets 2. View History 3.Leave Review ");
-			choice3 = sc2.nextInt();
-			sc2.nextLine();
-			if (choice3==2){
-				ViewHistory vh = new ViewHistory();
-				vh.view();
+
+			System.out.println("What do you wish to do? 1. Book movie 2. View History 3.Leave Review ");
+			int choice = sc2.nextInt();
+			
+			// 2. Viewing history
+			if(choice == 2) {
+				int choice3 = 0;
+				System.out.println("What do you wish to do? 1. Book Tickets 2. View History 3.Leave Review ");
+				choice3 = sc2.nextInt();
+				sc2.nextLine();
+				if (choice3 == 2) {
+					ViewHistory vh = new ViewHistory();
+					vh.view();
+				}
 			}
 			
-			// assuming movie booking
-			//TODO : multiple bookings
-			
-			while (true) {
-				// 1. choose movie
-				
+			// 1. choose movie
+			else if (choice == 1) {
+				ArrayList<String> seatsChosenList = new ArrayList<String>();
 				System.out.println("Welcome to movie booking system!");
-				
+
 				ChooseMovie choiceofmovie = new ChooseMovie();
 				choiceofmovie.choice(allMovies);
-				//2. choose cineplex, cinema, get daytime
+				// 2. choose cineplex, cinema, get daytime
 				// loading cineplex locations from db
 				FileDb cineplexDb = new FileDb();
 				cineplexDb.setDbName("cineplexLocations");
@@ -186,45 +188,43 @@ public class Main {
 				for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
 					System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
 				}
-				
-				int choice = sc2.nextInt();
+
+				int choice4 = sc2.nextInt();
 				sc2.nextLine();
 				// TODO : error message if incorrect choice
-				Cineplex cineplex = new Cineplex(cineplexLocations[choice - 1]);
+				Cineplex cineplex = new Cineplex(cineplexLocations[choice4 - 1]);
+				while (true) {
+					// 5. get seat
+					SeatSelector ss = new SeatSelector(seatsChosenList);
+					String seatChosen = ss.getSelectedSeat();
+					seatsChosenList.add(seatChosen);
 
-				// 5. get seat
-				SeatSelector ss = new SeatSelector();
-				String seatChosen = ss.getSelectedSeat();
+					System.out.println(cineplex.cineplexLocation + ", " + cineplex.cinema.cinematype + ", "
+							+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
+					System.out.println("Seat chosen:" + seatChosen);
 
-				System.out.println(cineplex.cineplexLocation + ", " + cineplex.cinema.cinematype + ", "
-						+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
-				System.out.println("Seat chosen:" + seatChosen);
+					// ticket class, which gets the user info and sets the price
+					Ticket t = new Ticket(cineplex);
+					Double ticketPrice = t.getTicketPrice();
+					System.out.println("Ticketprice is :" + ticketPrice.toString());
+					FileDb history = new FileDb();
+					history.setDbName("history");
+					String[] record = new String[] { username, password, t.name, t.phNo, t.email, t.cinemaType,choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(),t.transactionID };
+					history.addRecord(record);
 
-				//ticket class, which gets the user info and sets the price
-				Ticket t = new Ticket(cineplex);
-				Double ticketPrice = t.getTicketPrice();
-				System.out.println("Ticketprice is :"+ ticketPrice.toString());
-				// store final confirmation details in db, build history viewing after you load things from db
-				FileDb history = new FileDb();
-				history.setDbName("history");
-				String[] record = new String[] {username, password, t.name, t.phNo, t.email, t.cinemaType, choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(), t.transactionID};
-				history.addRecord(record);
-				
-				System.out.println("Book another seat? (y/n):");
-//				while (!sc2.hasNext()) {
-//					//wait until it has next
-//				}
-				String cfm = sc2.nextLine();
-				if (cfm.toLowerCase().equals("n")) {
-					break;
+					System.out.println("Book another seat? (y/n):");
+//					while (!sc2.hasNext()) {
+//						//wait until it has next
+//					}
+					String cfm = sc2.nextLine();
+					if (cfm.toLowerCase().equals("n")) {
+						break;
+					}
 				}
-				/*if (cfm.toLowerCase().equals("no")) {
-					break;
-				}*/
 			}
+
+			
 			sc2.close();
-			//TODO: Add previously selected seat when booking another seat. Accordingly modify history to reflect payment of multiple tx
-			// TODO: bring the while loop down lower so that it doesnt start from beginning all the time
 		}
 
 	}
