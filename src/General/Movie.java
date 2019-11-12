@@ -39,6 +39,7 @@ public class Movie {
     	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter number for choosing the movie type among: 1.2D  2.3D  3.Blockbuster: ");
         this.type_choice = sc.nextInt();
+        sc.nextLine();
         switch(type_choice){
         case 1:
         	type = "TWO-D";
@@ -56,6 +57,7 @@ public class Movie {
     	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter number for choosing the movie rating among 1.G  2.PG  3.PG-13 4.R");
         this.PGrating_choice = sc.nextInt();
+        sc.nextLine();
         switch(PGrating_choice){
         case 1:
         	PGrating = "G";
@@ -82,6 +84,7 @@ public class Movie {
     	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie runtime: ");
         this.runtime = sc.nextInt();
+        sc.nextLine();
         //sc3.close();
     }
     public void setShowingStatus(int theStatus){
@@ -92,6 +95,7 @@ public class Movie {
     	//Scanner sc3 = new Scanner(System.in);
         System.out.println("Enter the movie language: ");
         this.language = sc.next();
+        sc.nextLine();
         //sc3.close();
     }
     public String getTitle(){

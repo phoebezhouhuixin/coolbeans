@@ -61,7 +61,7 @@ public class Main {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
 //		sc.close();
-
+		
 		if (staff == true && auth) {
 			Scanner sc1 = new Scanner(System.in);
 			// assuming staff
@@ -81,10 +81,12 @@ public class Main {
 				System.out.println("4. view allmovies arraylist");
 				System.out.println("5. Quit");
 				choice1 = sc1.nextInt();
+				sc1.nextLine();
 				switch (choice1) {
 				case 1:
 					System.out.println("What do you wish to do: 1.Create 2.Update 3.Remove 4.View ranking");
 					choice2 = sc1.nextInt();
+					sc1.nextLine();
 					switch (choice2) {
 					case 1:
 						modify.createMovie(allMovies);
@@ -146,7 +148,8 @@ public class Main {
 			}
 			sc1.close();
 		}
-
+		
+		
 		if (staff == false && auth) {
 			Scanner sc2 = new Scanner(System.in);
 			// assuming it's the moviegoer

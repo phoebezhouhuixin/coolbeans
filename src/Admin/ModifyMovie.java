@@ -28,6 +28,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
         System.out.println("3: Now showing");
         System.out.println("4: End of showing");
         int theStatus = sc2.nextInt();
+        sc2.nextLine();
         newMovie.setShowingStatus(theStatus);
 
 
@@ -43,8 +44,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
         
         newMovie.setCast(theNames);
         addNewMovieToArray(newMovie,allMovies);
-        this.allMovies = allMovies;        
-        sc2.close();
+        this.allMovies = allMovies;
     }
     public void addNewMovieToArray(Movie newMovie , ArrayList<Movie> allMovies){
         this.numberOfMovies+=1;
@@ -71,11 +71,11 @@ public class ModifyMovie { // call the setters of General.Movie.java
         int update_choice=0;
         for (Map<String,String> movie : movies){
         	String[] currentRecord = new String[] {movie.get("title"),movie.get("synopsis"),movie.get("director"),movie.get("language"),movie.get("type"),movie.get("PGrating"),movie.get("status"), movie.get("overallRating"),movie.get("cast"),};
-        	//TODO : is this logic even right?
         	
             if (movie.get("title").equals(check_by_title)) {
                 System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Type 7. PGRating 8.Exit");
                 update_choice = sc2.nextInt();
+                sc2.nextLine();
                 while (update_choice != 8){
                     switch (update_choice) {
                         case 1:
@@ -103,6 +103,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
                             System.out.println("3: Now showing");
                             System.out.println("4: End of showing");
                             Integer theStatus = sc2.nextInt();
+                            sc2.nextLine();
                             currentRecord[6] = theStatus.toString();
                             System.out.println("Successfully updated!");
                             break;
@@ -132,6 +133,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
                     }
                     System.out.println("What do you wish to change: 1.Title 2.Director 3.Synopsis 4.Showing Status 5.Language 6.Type 7. PGRating 8.Exit");
                     update_choice = sc2.nextInt();
+                    sc2.nextLine();
                 }
                 movieDb.removeEntry("title", check_by_title);
                 movieDb.addRecord(currentRecord);
@@ -139,7 +141,6 @@ public class ModifyMovie { // call the setters of General.Movie.java
 
         }
         this.allMovies = allMovies;
-        sc2.close();
     }
     
     public ArrayList<Movie> getAllMovies(){
@@ -159,6 +160,7 @@ public class ModifyMovie { // call the setters of General.Movie.java
         int display_choice = 0;
         System.out.println("Enter ranking criteria: 1.Ticket Sales 2.Review Ratings ");
         display_choice = sc2.nextInt();
+        sc2.nextLine();
         switch(display_choice){
             case 1:
                 // TODO after booking history
@@ -170,6 +172,5 @@ public class ModifyMovie { // call the setters of General.Movie.java
                 }
         }
         this.allMovies = allMovies;
-        sc2.close();
     }
 }
