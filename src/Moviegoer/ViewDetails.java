@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import General.Movie;
+import General.Review;
 
 public class ViewDetails {
 	public void displaydetails(ArrayList<Movie> allMovies){
@@ -61,4 +62,5 @@ public class ViewDetails {
 		}
 		sc5.close();
 	}
+	
 }

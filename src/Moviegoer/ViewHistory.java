@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import General.Movie;
+import General.Review;
 import fileDb.FileDb;
 public class ViewHistory {
 	String un,pw;
@@ -34,4 +36,12 @@ public class ViewHistory {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
 	}
+	public void leaveReview(String movieTitle, ArrayList<Movie> allMovies){
+        for (Movie aMovie : allMovies){ // i.e. "for movie in the arraylist of all movies"
+            if (aMovie.getTitle().equals(movieTitle)) {
+                aMovie.getReviewArray().add(new Review());
+                return;
+            }
+        }
+    }
 }
