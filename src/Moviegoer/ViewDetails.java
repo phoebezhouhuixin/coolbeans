@@ -1,19 +1,24 @@
 package Moviegoer;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
+import fileDb.FileDb;
 import General.Movie;
 import General.Review;
 
 public class ViewDetails {
-	public void displaydetails(ArrayList<Movie> allMovies){
+	public void displaydetails(){
+		FileDb movieDb = new FileDb();
+    	movieDb.setDbName("movies");
+    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
 		String input_title;
 		int detail_choice=0;
 		Scanner sc5 = new Scanner(System.in);
 		System.out.println("Enter the title of the movie whose details you wish to view: ");
 		input_title = sc5.nextLine();
-		for (int i =0; i < allMovies.size(); i+=1){
-            if (allMovies.get(i).getTitle().equals(input_title)){
+		for (Map<String, String> per_movie : movies) {
+			if (per_movie.get("title").equals(input_title)) {
             	System.out.println("Enter your choice to view: ");
             	System.out.println("1. Director 2. Showing Status");
             	System.out.println("3. Synopsis 4. Cast");
@@ -23,32 +28,32 @@ public class ViewDetails {
             	while (detail_choice!=8){
 	            	switch (detail_choice){
 	            	case 1: 
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Director: "+allMovies.get(i).getDirector());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Director: "+per_movie.get("director"));
 	            		break;
 	            	case 2:
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Showing Status: "+allMovies.get(i).getShowingStatus());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Showing Status: "+per_movie.get("status"));
 	            		break;
 	            	case 3:
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Synopsis: "+allMovies.get(i).getSynopsis());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Synopsis: "+per_movie.get("synopsis"));
 	            		break;
 	            	case 4:
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Cast: "+allMovies.get(i).getCast());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Cast: "+per_movie.get("cast"));
 	            		break;
 	            	case 5:
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Reviews: "+allMovies.get(i).getReviewArray());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Reviews: "+per_movie.get("review"));
 	            		break;
 	            	case 6:
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Type of movie: "+allMovies.get(i).getType());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Type of movie: "+per_movie.get("type"));
 	            		break;
 	            	case 7:
-	            		System.out.println("Movie: "+allMovies.get(i).getTitle());
-	            		System.out.println("Movie PG Rating: "+allMovies.get(i).getPGrating());
+	            		System.out.println("Movie: "+per_movie.get("title"));
+	            		System.out.println("Movie PG Rating: "+per_movie.get("PGrating"));
 	            		break;
 	            	default:
 	            		System.out.println("Invalid output");

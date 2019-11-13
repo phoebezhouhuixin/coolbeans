@@ -37,8 +37,11 @@ public class ViewHistory {
 		}
 	}
 	public void leaveReview(String movieTitle, ArrayList<Movie> allMovies){
+		if (allMovies==null)
+			System.out.println("No movies");
         for (Movie aMovie : allMovies){ // i.e. "for movie in the arraylist of all movies"
             if (aMovie.getTitle().equals(movieTitle)) {
+            	System.out.println("Movie found");
                 aMovie.getReviewArray().add(new Review());
                 return;
             }
