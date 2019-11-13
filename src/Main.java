@@ -179,8 +179,8 @@ public class Main {
 				System.out.println("The movies you can review are: ");
 				System.out.println("Movie Name"+"\t"+"Showing Status");
 				for (Map<String, String> per_movie : movies) {
-					if (per_movie.get("status").equals("Now showing") || per_movie.get("status").equals("Preview") )
-						System.out.println(per_movie.get("title")+"\t"+per_movie.get("status"));
+					if (per_movie.get("status").equals("Now Showing") || per_movie.get("status").equals("Preview") )
+					System.out.println(per_movie.get("title")+"\t\t"+per_movie.get("status"));
 				}
 				System.out.println("Enter the name of the movie you wish to leave a review about: ");
 				movie_to_review = sc2.next();
