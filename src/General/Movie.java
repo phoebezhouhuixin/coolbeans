@@ -1,8 +1,11 @@
 package General;
 
 
+import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
+
+import fileDb.FileDb;
 
 public class Movie {
 //    Scanner sc3 = new Scanner(System.in);
@@ -118,7 +121,7 @@ public class Movie {
         return PGrating;
     }
     public Integer getOverallRating(){
-        return overallrating;
+    	return calcOverallRating(this.getTitle());
     }
     public String getDirector(){
         return director;
@@ -132,12 +135,18 @@ public class Movie {
     public ArrayList<Review> getReviewArray() {
         return reviewArray;
     }
-    public double calcOverallRating(ArrayList<Review> reviewArray){
-        int sum = 0;
-        for (Review aReview: reviewArray){
-            sum+= aReview.getRating();
-        }
-        overallrating= sum/reviewArray.size();
+    public Integer calcOverallRating(String movie_name){
+        int sum = 0,count=0;
+        FileDb reviewDb = new FileDb();
+        reviewDb.setDbName("reviews");
+		ArrayList<Map<String, String>> reviewData = reviewDb.readDataBase("reviews");
+		for (Map<String, String> per_review : reviewData) {
+			if (per_review.get("title").equals(movie_name)) {
+				sum+= Integer.parseInt(per_review.get("rating"));
+				count++;
+			}
+		}
+        overallrating= sum/count;
         return overallrating;
     }
 

@@ -36,8 +36,10 @@ public class ViewHistory {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
 	}
-	public void leaveReview(String movieTitle, ArrayList<Movie> allMovies){
-		if (allMovies==null)
+	public void leaveReview(String movieTitle){
+		String user_review;
+		Integer user_rating;
+		/*if (allMovies==null)
 			System.out.println("No movies");
         for (Movie aMovie : allMovies){ // i.e. "for movie in the arraylist of all movies"
             if (aMovie.getTitle().equals(movieTitle)) {
@@ -45,6 +47,14 @@ public class ViewHistory {
                 aMovie.getReviewArray().add(new Review());
                 return;
             }
-        }
+        }*/
+		System.out.println("Enter your rating for the movie for an integer value between 0 to 5");
+		user_rating = sc8.nextInt();
+		System.out.println("Enter your review for the movie under double quotes");
+		user_review = sc8.next();
+		FileDb reviewDb = new FileDb();        
+        reviewDb.setDbName("reviews");
+        String [] reviewToAddToReviewDb = new String[] {movieTitle, user_rating.toString(), user_review };
+        reviewDb.addRecord(reviewToAddToReviewDb);
     }
 }

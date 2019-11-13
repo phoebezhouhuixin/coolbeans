@@ -2,8 +2,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Map;
 
+
+
 //General imports
 import General.Movie;
+import Moviegoer.Search;
 import Moviegoer.ViewHistory;
 //Admin imports
 import Admin.Login;
@@ -168,11 +171,18 @@ public class Main {
 			else if (choice == 3){
 				String movie_to_review;
 				ViewHistory vh = new ViewHistory();
-			
-				System.out.println(allMovies);
+				FileDb movieDb = new FileDb();
+		    	movieDb.setDbName("movies");
+		    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+				System.out.println("The movies you can review are: ");
+				System.out.println("Movie Name"+"\t"+"Showing Status");
+				for (Map<String, String> per_movie : movies) {
+					if (per_movie.get("status").equals("Now showing") || per_movie.get("status").equals("Preview") )
+						System.out.println(per_movie.get("title")+"\t"+per_movie.get("status"));
+				}
 				System.out.println("Enter the name of the movie you wish to leave a review about: ");
 				movie_to_review = sc2.next();
-				vh.leaveReview(movie_to_review, allMovies);
+				vh.leaveReview(movie_to_review);
 				System.out.println("ok");
 			}
 			

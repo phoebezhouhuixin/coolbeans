@@ -176,11 +176,11 @@ public class ModifyMovie {
             case 1:
                 // TODO after booking history
             case 2:
-                Map <String, Double> map = new HashMap<String, Double>();
-                for (int i = 0; i<= allMovies.size(); i++){
-                    Movie aMovie = allMovies.get(i);
-                    map.put(aMovie.getTitle(), aMovie.calcOverallRating(aMovie.getReviewArray()));
-                }
+//                Map <String, Double> map = new HashMap<String, Double>();
+//                for (int i = 0; i<= allMovies.size(); i++){
+//                    Movie aMovie = allMovies.get(i);
+//                    map.put(aMovie.getTitle(), aMovie.calcOverallRating(aMovie.getTitle()));
+//                }
         }
         this.allMovies = allMovies;
     }
