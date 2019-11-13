@@ -1,10 +1,10 @@
-title, synopsis, director, language, type, PGrating, status, overallRating, cast
-reere,man eating beans,alen,t,THREE-D,PG,1,0,;rohan;alen;simb;
-r,r,r,o,TWO-D,G,Coming soon,0,;o;
-r,syn,rohan,english,THREE-D,PG,Preview,0,;r;
-dabang,nothing,me,tamil,THREE-D,PG,Preview,0,bot;joy;
-eew,eew,eew,tma,TWO-D,PG,Preview,0,r;
-re,re,re,tamizh,THREE-D,PG,Coming soon,0,e;
-rew,w,w,w,THREE-D,PG,Preview,0,e;
-rq,fo,fo,t,TWO-D,G,Coming soon,0,beans;
-re,woooorldstar,re,rew,TWO-D,G,Coming soon,0,r;
+title, synopsis, director, language, type, PGrating, status, review, overallRating, cast
+reere,man eating beans,alen,t,THREE-D,PG,Now showing,meh, 0,;rohan;alen;simb;
+r,r,r,o,TWO-D,G,Coming soon,horrible, 0,;o;
+r,syn,rohan,english,THREE-D,PG,Preview,surviving,0,;r;
+dabang,nothing,me,tamil,THREE-D,PG,Preview,terrible,0,bot;joy;
+eew,eew,eew,tma,TWO-D,PG,Preview,wonderful,0,r;
+re,re,re,tamizh,THREE-D,PG,Coming soon,loved it,0,e;
+rew,w,w,w,THREE-D,PG,Preview,can tolerate,0,e;
+rq,fo,fo,t,TWO-D,G,Coming soon,yuck,0,beans;
+re,woooorldstar,re,rew,TWO-D,G,Coming soon,meh,0,r;

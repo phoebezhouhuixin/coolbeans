@@ -20,12 +20,12 @@ public class ChooseMovie {
 			case 1:
 				// TODO : this doesn't do anything!
 				Search s1 = new Search();
-				s1.display(allMovies);
+				s1.display();
 				break;
 			case 2:
 				// TODO : this doesn't do anything!
 				ViewDetails v1 = new ViewDetails();
-				v1.displaydetails(allMovies);
+				v1.displaydetails();
 				break;
 			case 3:
 				System.out.println("Please enter the name of the movie you wish to watch: ");

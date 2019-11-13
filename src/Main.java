@@ -165,14 +165,20 @@ public class Main {
 			
 			// 2. Viewing history
 			if(choice == 2) {
-				int choice3 = 0;
-				System.out.println("What do you wish to do? 1. Book Tickets 2. View History 3.Leave Review ");
-				choice3 = sc2.nextInt();
-				sc2.nextLine();
-				if (choice3 == 2) {
-					ViewHistory vh = new ViewHistory();
-					vh.view();
-				}
+				
+				ViewHistory vh = new ViewHistory();
+				vh.view();
+				
+			}
+			else if (choice == 3){
+				String movie_to_review;
+				ViewHistory vh = new ViewHistory();
+			
+				System.out.println(allMovies);
+				System.out.println("Enter the name of the movie you wish to leave a review about: ");
+				movie_to_review = sc2.next();
+				vh.leaveReview(movie_to_review, allMovies);
+				System.out.println("ok");
 			}
 			
 			// 1. choose movie
