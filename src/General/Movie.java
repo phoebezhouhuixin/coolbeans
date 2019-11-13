@@ -146,7 +146,10 @@ public class Movie {
 				count++;
 			}
 		}
-        overallrating= sum/count;
+		if (count==0)
+			overallrating = 0;
+		else
+			overallrating= sum/count;
         return overallrating;
     }
 
