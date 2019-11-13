@@ -1,16 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.EnumMap; 
 
 //General imports
 import General.Movie;
 import Moviegoer.ViewHistory;
-import General.CinemaTypes;
-import General.MovieTypes;
-import General.AgeTypes;
-import General.DayTypes;
-
 //Admin imports
 import Admin.Login;
 import Admin.ModifyMovie;
@@ -35,29 +29,7 @@ public class Main {
 		 */
 
 		ArrayList<Movie> allMovies = new ArrayList<Movie>();
-
-		// Define the EnumMaps that dictate the price for each type of cinema, 
-		// price each type of movie, price for each age group, price for each day (holiday or not).
-		EnumMap<CinemaType, double> cinemaPriceMap = new EnumMap<CinemaType, double>(CinemaType.class); 
-  		cinemaPriceMap.put(CinemaType.SILVER, 10.00); 
-  		cinemaPriceMap.put(CinemaType.GOLD, 12.00);
-  		cinemaPriceMap.put(CinemaType.PLATINUM, 15.00);
-
-  		EnumMap<MovieType, double> moviePriceMap = new EnumMap<MovieType, double>(MovieType.class); 
-  		moviePriceMap.put(MovieType.TWOD, 4.00); 
-  		moviePriceMap.put(MovieType.THREED, 5.00);
-  		moviePriceMap.put(MovieType.BLOCKBUSTER, 6.00);
-
-		EnumMap<AgeType, double> agePriceMap = new EnumMap<AgeType, double>(AgeType.class); 
-  		agePriceMap.put(AgeType.STUDENT, 4.00); 
-  		agePriceMap.put(AgeType.SENIOR, 3.00);
-  		agePriceMap.put(AgeType.CHILD, 2.00);
-
-  		EnumMap<DayType, double> dayPriceMap = new EnumMap<DayType, double>(DayType.class); 
-  		dayPriceMap.put(DayType.WEEKDAY, 4.00); 
-  		dayPriceMap.put(DayType.WEEKEND, 5.00);
-  		dayPriceMap.put(DayType.HOLIDAY, 6.00);
-
+//		Scanner sc = new Scanner(System.in);
 		Login login = new Login();
 		login.setusername();
 		login.setpassword();
