@@ -78,7 +78,7 @@ public class Main {
 				System.out.println("1. Create/Update/Remove/View ranking Movie listing");
 				System.out.println("2. Create/Update/Remove cinema show times and movie to be shown");
 				System.out.println("3. Configure system settings");
-				System.out.println("4. view allmovies arraylist");
+				System.out.println("4. View movie List");
 				System.out.println("5. Quit");
 				choice1 = sc1.nextInt();
 				sc1.nextLine();
@@ -131,12 +131,14 @@ public class Main {
 					}
 
 				case 4:
-					for (Movie movie : modify.getAllMovies()) {
-						System.out.println(movie.getTitle());
-					}
-					System.out.println("-------------------------");
-					for (Movie movie : allMovies) {
-						System.out.println(movie.getShowingStatus());
+					FileDb movieDb = new FileDb();
+			    	movieDb.setDbName("movies");
+					ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+			    	System.out.println(String.format("    %7s %15s %10s %15s %9s %10s %20s %15s %7s", "title", "synopsis", "director", "language", "type", "PGrating", "status", "overallRating", "cast"));
+			    	Integer counter = 1;
+					for (Map<String, String> movie : movies) {
+						System.out.println(counter.toString()+" : "+String.format("%7s %15s %10s %15s %9s %10s %20s %15s %7s", movie.get("title"), movie.get("synopsis"),movie.get("director"),movie.get("language"),movie.get("type"),movie.get("PGrating"),movie.get("status"), movie.get("overallRating"),movie.get("cast")));//movie.get("title")+", "+movie.get("synopsis"))+", "+movie.get("director")+", "+movie.get("language")+", "+movie.get("type")+", "+movie.get("PGrating")+", "+movie.get("status")+ ", "+movie.get("overallRating")+", "+movie.get("cast"));
+						counter+=1;
 					}
 					break;
 				case 5:
