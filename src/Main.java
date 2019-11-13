@@ -167,7 +167,7 @@ public class Main {
 			if(choice == 2) {
 				
 				ViewHistory vh = new ViewHistory();
-				vh.view();
+				vh.view(username, password);
 				
 			}
 			else if (choice == 3){

@@ -11,11 +11,7 @@ import fileDb.FileDb;
 public class ViewHistory {
 	String un,pw;
 	Scanner sc8 = new Scanner(System.in);
-	public void view(){
-		System.out.println("Enter your username: ");
-		un = sc8.nextLine();
-		System.out.println("Enter your password: ");
-		pw = sc8.nextLine();
+	public void view(String un, String pw){
 		FileDb histDb = new FileDb();
 		histDb.setDbName("history");
 		ArrayList<Map<String, String>> histData = histDb.readDataBase("history");
