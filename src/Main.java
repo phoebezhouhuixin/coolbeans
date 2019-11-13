@@ -185,7 +185,7 @@ public class Main {
 				System.out.println("Enter the name of the movie you wish to leave a review about: ");
 				movie_to_review = sc2.next();
 				vh.leaveReview(movie_to_review);
-				System.out.println("ok");
+				System.out.println("Your review has been recorded!");
 			}
 			
 			// 1. choose movie

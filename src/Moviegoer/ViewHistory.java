@@ -55,6 +55,19 @@ public class ViewHistory {
 		FileDb reviewDb = new FileDb();        
         reviewDb.setDbName("reviews");
         String [] reviewToAddToReviewDb = new String[] {movieTitle, user_rating.toString(), user_review };
-        reviewDb.addRecord(reviewToAddToReviewDb);
+		reviewDb.addRecord(reviewToAddToReviewDb);
+		Movie m = new Movie(movieTitle);
+		Integer new_overall = m.getOverallRating();
+		FileDb movieDb = new FileDb();
+    	movieDb.setDbName("movies");
+		ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+		for (Map<String,String> movie : movies){
+			if (movie.get("title").equals(movieTitle)){
+				String[] currentRecord = new String[] {movie.get("title"),movie.get("synopsis"),movie.get("director"),movie.get("language"),movie.get("type"),movie.get("PGrating"),movie.get("status"), new_overall.toString(),movie.get("cast"),};
+				movieDb.removeEntry("title", movieTitle);
+                movieDb.addRecord(currentRecord);
+			}
+			
+		}
     }
 }
