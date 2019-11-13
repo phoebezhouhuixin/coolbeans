@@ -159,85 +159,90 @@ public class Main {
 			 * access]) 2. View history (from historydb) 3. Leave Reviews (only for movies
 			 * seen already by user)
 			 */
-
-			System.out.println("What do you wish to do? 1. Book movie 2. View History 3.Leave Review ");
-			int choice = sc2.nextInt();
-			
-			// 2. Viewing history
-			if(choice == 2) {
+			while(true) {
+				System.out.println("\n\nWhat do you wish to do? 1. Book movie 2. View History 3.Leave Review 4.Quit ");
+				int choice = sc2.nextInt();
 				
-				ViewHistory vh = new ViewHistory();
-				vh.view(username, password);
+				// 2. Viewing history
+				if(choice == 2) {
+					
+					ViewHistory vh = new ViewHistory();
+					vh.view(username, password);
+					
+				}
+				else if (choice == 3){
+					String movie_to_review;
+					ViewHistory vh = new ViewHistory();
+					FileDb movieDb = new FileDb();
+			    	movieDb.setDbName("movies");
+			    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+					System.out.println("The movies you can review are: ");
+					System.out.println("Movie Name"+"\t"+"Showing Status");
+					for (Map<String, String> per_movie : movies) {
+						if (per_movie.get("status").equals("Now Showing") || per_movie.get("status").equals("Preview") )
+						System.out.println(per_movie.get("title")+"\t\t"+per_movie.get("status"));
+					}
+					System.out.println("Enter the name of the movie you wish to leave a review about: ");
+					movie_to_review = sc2.next();
+					vh.leaveReview(movie_to_review);
+					System.out.println("Your review has been recorded!");
+				}
 				
-			}
-			else if (choice == 3){
-				String movie_to_review;
-				ViewHistory vh = new ViewHistory();
-				FileDb movieDb = new FileDb();
-		    	movieDb.setDbName("movies");
-		    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
-				System.out.println("The movies you can review are: ");
-				System.out.println("Movie Name"+"\t"+"Showing Status");
-				for (Map<String, String> per_movie : movies) {
-					if (per_movie.get("status").equals("Now Showing") || per_movie.get("status").equals("Preview") )
-					System.out.println(per_movie.get("title")+"\t\t"+per_movie.get("status"));
-				}
-				System.out.println("Enter the name of the movie you wish to leave a review about: ");
-				movie_to_review = sc2.next();
-				vh.leaveReview(movie_to_review);
-				System.out.println("Your review has been recorded!");
-			}
-			
-			// 1. choose movie
-			else if (choice == 1) {
-				ArrayList<String> seatsChosenList = new ArrayList<String>();
-				System.out.println("Welcome to movie booking system!");
-
-				ChooseMovie choiceofmovie = new ChooseMovie();
-				choiceofmovie.choice(allMovies);
-				// 2. choose cineplex, cinema, get daytime
-				// loading cineplex locations from db
-				FileDb cineplexDb = new FileDb();
-				cineplexDb.setDbName("cineplexLocations");
-				Map<String, String> cpData = cineplexDb.readDataBase("cineplexLocations").get(0);
-
-				String[] cineplexLocations = new String[] { cpData.get("Location1"), cpData.get("Location2"),
-						cpData.get("Location3"), cpData.get("Location4") }; // TODO : load locations from db
-				System.out.println("Choose cineplex location");
-				for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
-					System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
-				}
-
-				int choice4 = sc2.nextInt();
-				sc2.nextLine();
-				// TODO : error message if incorrect choice
-				Cineplex cineplex = new Cineplex(cineplexLocations[choice4 - 1]);
-				while (true) {
-					// 5. get seat
-					SeatSelector ss = new SeatSelector(seatsChosenList);
-					String seatChosen = ss.getSelectedSeat();
-					seatsChosenList.add(seatChosen);
-
-					System.out.println(cineplex.cineplexLocation + ", " + cineplex.cinema.cinematype + ", "
-							+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
-					System.out.println("Seat chosen:" + seatChosen);
-
-					// ticket class, which gets the user info and sets the price
-					Ticket t = new Ticket(cineplex);
-					Double ticketPrice = t.getTicketPrice();
-					System.out.println("Ticketprice is :" + ticketPrice.toString());
-					FileDb history = new FileDb();
-					history.setDbName("history");
-					String[] record = new String[] { username, password, t.name, t.phNo, t.email, t.cinemaType,choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(),t.transactionID };
-					history.addRecord(record);
-
-					System.out.println("Book another seat? (y/n):");
-					String cfm = sc2.nextLine();
-					if (cfm.toLowerCase().equals("n")) {
-						break;
+				// 1. choose movie
+				else if (choice == 1) {
+					ArrayList<String> seatsChosenList = new ArrayList<String>();
+					System.out.println("Welcome to movie booking system!");
+	
+					ChooseMovie choiceofmovie = new ChooseMovie();
+					choiceofmovie.choice(allMovies);
+					// 2. choose cineplex, cinema, get daytime
+					// loading cineplex locations from db
+					FileDb cineplexDb = new FileDb();
+					cineplexDb.setDbName("cineplexLocations");
+					Map<String, String> cpData = cineplexDb.readDataBase("cineplexLocations").get(0);
+	
+					String[] cineplexLocations = new String[] { cpData.get("Location1"), cpData.get("Location2"),
+							cpData.get("Location3"), cpData.get("Location4") }; // TODO : load locations from db
+					System.out.println("Choose cineplex location");
+					for (Integer i = 1; i <= cineplexLocations.length; i += 1) {
+						System.out.println(i.toString() + ") " + cineplexLocations[i - 1]);
+					}
+	
+					int choice4 = sc2.nextInt();
+					sc2.nextLine();
+					// TODO : error message if incorrect choice
+					Cineplex cineplex = new Cineplex(cineplexLocations[choice4 - 1]);
+					while (true) {
+						// 5. get seat
+						SeatSelector ss = new SeatSelector(seatsChosenList);
+						String seatChosen = ss.getSelectedSeat();
+						seatsChosenList.add(seatChosen);
+	
+						System.out.println(cineplex.cineplexLocation + ", " + cineplex.cinema.cinematype + ", "
+								+ cineplex.cinema.cost.toString() + ", " + cineplex.cinema.day + ", " + cineplex.cinema.time);
+						System.out.println("Seat chosen:" + seatChosen);
+	
+						// ticket class, which gets the user info and sets the price
+						Ticket t = new Ticket(cineplex);
+						Double ticketPrice = t.getTicketPrice();
+						System.out.println("Ticketprice is :" + ticketPrice.toString());
+						FileDb history = new FileDb();
+						history.setDbName("history");
+						String[] record = new String[] { username, password, t.name, t.phNo, t.email, t.cinemaType,choiceofmovie.selected_movie, t.movieType, t.ageType, t.dayType, t.getTicketPrice().toString(),t.transactionID };
+						history.addRecord(record);
+	
+						System.out.println("Book another seat? (y/n):");
+						String cfm = sc2.nextLine();
+						if (cfm.toLowerCase().equals("n")) {
+							break;
+						}
 					}
 				}
+				if(choice == 4) {
+					break;
+				}
 			}
+			
 
 			
 			sc2.close();
