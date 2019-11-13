@@ -4,12 +4,11 @@ import java.util.*;
 import General.*;
 import fileDb.FileDb;
 
-public class ModifyMovie { // call the setters of General.Movie.java
+public class ModifyMovie { 
     int numberOfMovies = 0;
     Scanner sc2 = new Scanner(System.in);
     ArrayList<Movie> allMovies;
     public void createMovie(ArrayList<Movie> allMovies){
-//    	Scanner sc2 = new Scanner(System.in);
         System.out.println("Enter movie title: ");
         String theTitle = sc2.nextLine();
         Movie newMovie = new Movie(theTitle);
@@ -67,8 +66,15 @@ public class ModifyMovie { // call the setters of General.Movie.java
     	movieDb.setDbName("movies");
     	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
     	System.out.println(movies.toString());
-//    	Scanner sc2 = new Scanner(System.in);
         int update_choice=0;
+        //if needed..
+        // int allmovie_index = -1;
+        // for (int i =0; i < allMovies.size(); i+=1){
+        //     if (allMovies.get(i).getTitle().equals(check_by_title)) {
+        //     	allmovie_index = i;
+        //     }
+        // }
+        
         for (Map<String,String> movie : movies){
         	String[] currentRecord = new String[] {movie.get("title"),movie.get("synopsis"),movie.get("director"),movie.get("language"),movie.get("type"),movie.get("PGrating"),movie.get("status"), movie.get("overallRating"),movie.get("cast"),};
         	
@@ -148,6 +154,11 @@ public class ModifyMovie { // call the setters of General.Movie.java
     }
     
     public void removeMovieInArray(String check_by_title, ArrayList<Movie> allMovies) {
+    	FileDb movieDb = new FileDb();
+    	movieDb.setDbName("movies");
+    	// just removing it from the db
+    	movieDb.removeEntry("title", check_by_title);
+    	
         for (int i = 0; i < numberOfMovies; i += 1) {
             if (allMovies.get(i).getTitle().equals(check_by_title)) {
             	allMovies.get(i).setShowingStatus(4);

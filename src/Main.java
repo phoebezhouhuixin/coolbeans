@@ -67,9 +67,6 @@ public class Main {
 			// assuming staff
 			int choice1 = 0, choice2 = 0, choice3 = 0;
 			ModifyMovie modify = new ModifyMovie();
-			/// >>testing<<
-//			modify.updateExistingMovieInArray("reere", allMovies);
-			///------------
 			TicketPrice tp = new TicketPrice();
 			boolean loopCtrl = true;
 			while (loopCtrl) {
@@ -94,13 +91,11 @@ public class Main {
 						break;
 					case 2:
 						System.out.println("Enter the name of the movie that you wish to update: ");
-//						sc = new Scanner(System.in);
 						check_by_title = sc1.nextLine();
 						modify.updateExistingMovieInArray(check_by_title, allMovies);
 						break;
 					case 3:
 						System.out.println("Enter the name of the movie that you wish to remove: ");
-//						sc = new Scanner(System.in);
 						check_by_title = sc1.nextLine();
 						modify.removeMovieInArray(check_by_title, allMovies);
 						break;
@@ -225,9 +220,6 @@ public class Main {
 					history.addRecord(record);
 
 					System.out.println("Book another seat? (y/n):");
-//					while (!sc2.hasNext()) {
-//						//wait until it has next
-//					}
 					String cfm = sc2.nextLine();
 					if (cfm.toLowerCase().equals("n")) {
 						break;
