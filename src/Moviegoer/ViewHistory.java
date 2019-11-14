@@ -53,7 +53,7 @@ public class ViewHistory {
         String [] reviewToAddToReviewDb = new String[] {movieTitle, user_rating.toString(), user_review };
 		reviewDb.addRecord(reviewToAddToReviewDb);
 		Movie m = new Movie(movieTitle);
-		Integer new_overall = m.getOverallRating();
+		Double new_overall = m.getOverallRating();
 		FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
 		ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");

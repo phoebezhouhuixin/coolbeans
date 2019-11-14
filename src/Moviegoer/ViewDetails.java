@@ -23,9 +23,9 @@ public class ViewDetails {
             	System.out.println("1. Director 2. Showing Status");
             	System.out.println("3. Synopsis 4. Cast");
             	System.out.println("5. Overall Review Ratings 6. Type of Movie");
-            	System.out.println("7. Movie PG Rating 8. Exit");
+            	System.out.println("7. Movie PG Rating 8. Reviews 9. Exit");
             	detail_choice = sc5.nextInt();
-            	while (detail_choice!=8){
+            	while (detail_choice!=9){
 	            	switch (detail_choice){
 	            	case 1: 
 	            		System.out.println("Movie: "+per_movie.get("title"));
@@ -45,7 +45,20 @@ public class ViewDetails {
 	            		break;
 	            	case 5:
 	            		System.out.println("Movie: "+per_movie.get("title"));
-	            		System.out.println("Reviews: "+per_movie.get("review"));
+	            		System.out.println("Overall Rating: "+per_movie.get("overallRating"));
+	            		break;
+	            	case 8:
+	            		System.out.println("Movie: "+per_movie.get("title"));
+//	            		System.out.println("Reviews: "+per_movie.get("review"));
+	            		FileDb reviewDb = new FileDb();
+	                    reviewDb.setDbName("reviews");
+	            		ArrayList<Map<String, String>> reviewData = reviewDb.readDataBase("reviews");
+	            		for (Map<String, String> per_review : reviewData) {
+	            			if (per_review.get("title").equals(per_movie.get("title"))) {
+	            				System.out.println(per_review);
+	            			}
+	            		}
+	            		
 	            		break;
 	            	case 6:
 	            		System.out.println("Movie: "+per_movie.get("title"));
