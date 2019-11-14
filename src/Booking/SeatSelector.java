@@ -37,7 +37,12 @@ public class SeatSelector {
 		// print column listing
 		System.out.print("\t");
 		for (Integer i = 0; i < cols; i += 1) {
-			System.out.print(i.toString() + "\t");
+			if(i==4){
+				System.out.print(i.toString() + "\t\t");
+			}
+			else{
+				System.out.print(i.toString() + "\t");
+			}
 		}
 		System.out.println();
 		// print row listing
@@ -52,7 +57,12 @@ public class SeatSelector {
 						j+=1;
 					}
 				}
-				System.out.print("[]" + "\t");
+				if(j==4){
+					System.out.print("[]" + "\t\t");
+				}
+				else{
+					System.out.print("[]" + "\t");
+				}
 			}
 			System.out.println();
 		}
