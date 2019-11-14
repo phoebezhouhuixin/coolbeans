@@ -200,7 +200,6 @@ public class Main {
 				FileDb cineplexDb = new FileDb();
 				cineplexDb.setDbName("cineplexLocations");
 				Map<String, String> cpData = cineplexDb.readDataBase("cineplexLocations").get(0);
-
 				String[] cineplexLocations = new String[] { cpData.get("Location1"), cpData.get("Location2"),
 						cpData.get("Location3"), cpData.get("Location4") }; // TODO : load locations from db
 				System.out.println("Choose cineplex location");

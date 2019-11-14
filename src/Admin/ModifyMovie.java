@@ -4,6 +4,17 @@ import java.util.*;
 import General.*;
 import fileDb.FileDb;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+
 public class ModifyMovie { 
     int numberOfMovies = 0;
     Scanner sc2 = new Scanner(System.in);
@@ -172,15 +183,89 @@ public class ModifyMovie {
         System.out.println("Enter ranking criteria: 1.Ticket Sales 2.Review Ratings ");
         display_choice = sc2.nextInt();
         sc2.nextLine();
+        FileDb movieDb = new FileDb();
+    	movieDb.setDbName("movies");
+    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+    	/*FileDb salesDb = new FileDb();
+    	salesDb.setDbName("sales");
+    	ArrayList<Map<String, String>> sales = salesDb.readDataBase("sales");*/
         switch(display_choice){
             case 1:
-                // TODO after booking history
-            case 2:
-//                Map <String, Double> map = new HashMap<String, Double>();
-//                for (int i = 0; i<= allMovies.size(); i++){
-//                    Movie aMovie = allMovies.get(i);
-//                    map.put(aMovie.getTitle(), aMovie.calcOverallRating(aMovie.getTitle()));
+            	int check1=1;
+            	Movie obj = new Movie("temp");
+                Map <Double, String> map1 = new HashMap<Double, String>();
+            	for (Map<String,String> movie : movies){
+                    obj.calcTicketSales(movie.get("title"));
+                }
+            	FileDb sales_refreshedDb = new FileDb();
+            	sales_refreshedDb.setDbName("sales");
+            	ArrayList<Map<String, String>> sales_new = sales_refreshedDb.readDataBase("sales");
+            	for(int i=0; i<sales_new.size(); i++){
+            		for(int j=0; j<sales_new.size()-1; j++){
+            			Map<String, String> currentSale = sales_new.get(j);
+            			Map<String, String> nextSale = sales_new.get(j+1);
+            			if (Double.parseDouble(currentSale.get("sales")) < Double.parseDouble(nextSale.get("sales"))){
+            				Collections.swap(sales_new, j, j+1);
+            			}
+            		}
+            	}
+            	for (Map<String, String> per_sale : sales_new){
+            		System.out.println(per_sale);
+//                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
+                }
+//            	//System.out.println("The sales data are: "+sales_new);
+//                Set<Entry<Double, String>> entries = map1.entrySet();
+//                TreeMap<Double, String> sorted = new TreeMap<>(map1);
+//                Set<Entry<Double, String>> mappings = sorted.entrySet();
+//                System.out.println("Movie Ranking are as follows (bottom is the highest ranked): ");
+//                System.out.println("size of array: "+mappings.size());
+//                for(Entry<Double, String> mapping : mappings){
+//                	/*if (mappings.size()>5){
+//                		if (check1<(mappings.size()-5))
+//                			continue;
+//                		else
+//                			System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
+//                		check1++;
+//                	}
+//                	else*/
+//                	System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
 //                }
+            	break;
+            case 2:
+            	int check2=1;
+                Map <Double, String> map2 = new HashMap<Double, String>();
+                for(int i=0; i<movies.size(); i++){
+            		for(int j=0; j<movies.size()-1; j++){
+            			Map<String, String> currentRating = movies.get(j);
+            			Map<String, String> nextRating = movies.get(j+1);
+            			if (Double.parseDouble(currentRating.get("overallRating")) < Double.parseDouble(nextRating.get("overallRating"))){
+            				Collections.swap(movies, j, j+1);
+            			}
+            		}
+            	}
+            	for (Map<String, String> per_movie : movies){
+            		System.out.println(per_movie.get("title")+"==>"+per_movie.get("overallRating"));
+//                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
+                }
+                /*for (Map<String, String> per_movie : movies){
+                    map2.put(Double.parseDouble(per_movie.get("overallRating")),per_movie.get("title"));
+                }
+                Set<Entry<Double, String>> entries2 = map2.entrySet();
+                TreeMap<Double, String> sorted2 = new TreeMap<>(map2);
+                Set<Entry<Double, String>> mappings2 = sorted2.entrySet();
+                System.out.println("Movie Ranking are as follows: (bottom is the highest ranked):");
+                for(Entry<Double, String> mapping : mappings2){
+                	if (mappings2.size()>5){
+                		if (check2<(mappings2.size()-5))
+                			continue;
+                		else
+                			System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
+                		check2++;
+                	}
+                	else
+                		System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
+                }*/
+                break;
         }
         this.allMovies = allMovies;
     }
