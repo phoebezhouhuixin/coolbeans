@@ -35,7 +35,7 @@ public class ModifyMovie {
         System.out.println("Enter movie showing status: ");
         System.out.println("1: Coming soon");
         System.out.println("2: Preview");
-        System.out.println("3: Now showing");
+        System.out.println("3: Now Showing");
         System.out.println("4: End of showing");
         int theStatus = sc2.nextInt();
         sc2.nextLine();
@@ -117,7 +117,7 @@ public class ModifyMovie {
                             System.out.println("Enter movie showing status: ");
                             System.out.println("1: Coming soon");
                             System.out.println("2: Preview");
-                            System.out.println("3: Now showing");
+                            System.out.println("3: Now Showing");
                             System.out.println("4: End of showing");
                             Integer theStatus = sc2.nextInt();
                             sc2.nextLine();

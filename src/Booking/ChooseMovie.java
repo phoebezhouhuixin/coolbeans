@@ -12,7 +12,7 @@ public class ChooseMovie {
 	public void choice(ArrayList<Movie> allMovies){
 		int choice1=0;		
 		
-		System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Continue ");
+		System.out.println("Do you wish to: 1.See movie list 2.Search movie details 3.Choose movie to book 4.Continue ");
 		choice1 = sc7.nextInt();
 		sc7.nextLine();
 		//while (choice1<5){
