@@ -16,7 +16,7 @@ public class Movie {
     Scanner sc = new Scanner (System.in);
     // not in the constructor
     private ArrayList<Review> reviewArray = new ArrayList<Review>(); // created by default every time we create a new movie.
-    private Integer overallrating =0;
+    private double overallrating =0;
 
     // implement all the constructors, getters and setters later
     // constructor
@@ -120,9 +120,10 @@ public class Movie {
     public String getPGrating(){
         return PGrating;
     }
-    public Integer getOverallRating(){
+    public Double getOverallRating(){
     	return calcOverallRating(this.getTitle());
     }
+    
     public String getDirector(){
         return director;
     }
@@ -135,15 +136,16 @@ public class Movie {
     public ArrayList<Review> getReviewArray() {
         return reviewArray;
     }
-    public Integer calcOverallRating(String movie_name){
-        int sum = 0,count=0;
+    public Double calcOverallRating(String movie_name){
+        double sum = 0;
+        double	count=0;
         FileDb reviewDb = new FileDb();
         reviewDb.setDbName("reviews");
 		ArrayList<Map<String, String>> reviewData = reviewDb.readDataBase("reviews");
 		for (Map<String, String> per_review : reviewData) {
 			if (per_review.get("title").equals(movie_name)) {
 				sum+= Integer.parseInt(per_review.get("rating"));
-				count++;
+				count+=1;
 			}
 		}
 		if (count==0)
@@ -151,6 +153,36 @@ public class Movie {
 		else
 			overallrating= sum/count;
         return overallrating;
+    }
+    public void calcTicketSales(String movie_name){
+        Double sales = 0.0;
+        int count=0;
+        FileDb history = new FileDb();
+        history.setDbName("history");
+		ArrayList<Map<String, String>> historyData = history.readDataBase("history");
+		FileDb salesDb = new FileDb();        
+		salesDb.setDbName("sales");
+		ArrayList<Map<String, String>> salesData = salesDb.readDataBase("sales");
+        //System.out.println("The history data is: "+historyData);
+		for (Map<String, String> per_sale : historyData) {
+			if (per_sale.get("movie").equals(movie_name)) {
+				sales+= Double.parseDouble(per_sale.get("price"));
+				count++;
+			}
+		}
+		if (count==0)
+			sales = 0.0;
+		
+		String [] addToSales = new String[]{movie_name, sales.toString()};
+		//System.out.println(movie_name);
+		//System.out.println(salesData);
+		for (Map<String, String> sale : salesData) {
+			if(sale.get("title").equals(movie_name)){
+				salesDb.removeEntry("title", movie_name);				
+			}
+		}	
+		salesDb.addRecord(addToSales);
+		
     }
 
 }

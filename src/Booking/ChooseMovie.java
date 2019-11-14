@@ -15,7 +15,7 @@ public class ChooseMovie {
 		System.out.println("Do you wish to: 1.See movie list 2.Search movie details 3.Choose movie to book 4.Continue ");
 		choice1 = sc7.nextInt();
 		sc7.nextLine();
-		while (choice1!=4){
+		//while (choice1<5){
 			switch(choice1){
 			case 1:
 				// TODO : this doesn't do anything!
@@ -32,11 +32,14 @@ public class ChooseMovie {
 				selected_movie = sc7.nextLine();
 				System.out.println("The movie you have chosen is: "+selected_movie);
 				break;
+			case 4:
+				choice1= 6;
+				break;
 			}
 			System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3.Choose movie to book 4.Continue ");
 			choice1 = sc7.nextInt();
 			sc7.nextLine();
-		}
+		//}
 //		while (sc7.hasNextLine()) {
 //			sc7.nextLine();
 //		}

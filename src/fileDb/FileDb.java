@@ -80,7 +80,7 @@ public class FileDb {
 					count+=1;
 				}else {
 					if(row.get(first.indexOf(colName)).equals(compareWith) == false ) {
-						// System.out.println("in here");
+//						System.out.println("in here");
 						writer.write(line+System.getProperty("line.separator"));
 					}
 				}
