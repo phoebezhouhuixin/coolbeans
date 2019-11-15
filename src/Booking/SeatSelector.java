@@ -53,7 +53,10 @@ public class SeatSelector {
 					int rowChoice = (int) choice.charAt(0);
 					int colChoice = Character.getNumericValue(choice.charAt(1));
 					if (i == rowChoice && j == colChoice) {
-						System.out.print("[*]" + "\t");
+						if (j == 4)
+							System.out.print("[*]" + "\t\t");
+						else
+							System.out.print("[*]" + "\t");
 						j+=1;
 					}
 				}

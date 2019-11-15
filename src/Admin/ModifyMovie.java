@@ -66,7 +66,7 @@ public class ModifyMovie {
 
         FileDb movieDb = new FileDb();        
         movieDb.setDbName("movies");
-        String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType(), newMovie.getPGrating(),newMovie.getShowingStatus().toString(), newMovie.getOverallRating().toString(), cast };
+        String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),newMovie.getShowingStatus().toString(), newMovie.getOverallRating().toString(), cast };
         movieDb.addRecord(recordToAddToMovieDb);
         this.allMovies = allMovies;
     }
@@ -134,7 +134,7 @@ public class ModifyMovie {
                         case 6:
                         	Movie temp5 = new Movie("temp");
                             temp5.setType();
-                            currentRecord[1] = temp5.getType();
+                            currentRecord[1] = temp5.getType().getMovieTypeName();
 //                        	allMovies.get(i).setType();
                             System.out.println("Successfully updated!");
                             break;

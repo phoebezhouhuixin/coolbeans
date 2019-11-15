@@ -9,8 +9,9 @@ import fileDb.FileDb;
 
 public class Movie {
 //    Scanner sc3 = new Scanner(System.in);
-    private String title, synopsis, director,language,type,PGrating;
+    private String title, synopsis, director,language,PGrating, cast;
     private ArrayList<String> castArray = new ArrayList<String>();
+    private MovieTypes type;
     private StatusEnum showingStatus;
     private int runtime,type_choice,PGrating_choice;
     Scanner sc = new Scanner (System.in);
@@ -23,6 +24,27 @@ public class Movie {
     public Movie(String theTitle){
         title = theTitle;
     }
+
+     // overload constructor
+    public Movie(String title, String synopsis, String director, String language,
+                 String type, String PGrating, String status, String overallRating, String cast){
+        this.title = title;
+        this.synopsis = synopsis;
+        this.director = director;
+        this.language = language;
+        for (MovieTypes theType: MovieTypes.values()){
+            if (theType.getMovieTypeName().equals(type))
+                this.type = theType;
+        }
+        this.PGrating = PGrating;
+        for (StatusEnum theStatus: StatusEnum.values()){
+            if (theStatus.toString().equals(status))
+                this.showingStatus = theStatus;
+        }
+        this.overallrating  = Double.valueOf(overallRating);
+        this.cast = cast;
+    }
+
     public void setCast(ArrayList<String> theNames){
         castArray = theNames;
     }
@@ -44,15 +66,15 @@ public class Movie {
         this.type_choice = sc.nextInt();
         sc.nextLine();
         switch(type_choice){
-        case 1:
-        	type = "TWO-D";
-        	break;
-        case 2:
-        	type = "THREE-D";
-        	break;
-        case 3:
-        	type = "BLOCKBUSTER";
-        	break;
+            case 1:
+                type = MovieTypes.TWOD;
+                break;
+            case 2:
+                type = MovieTypes.THREED;
+                break;
+            case 3:
+                type = MovieTypes.BLOCKBUSTER;
+                break;
         }
         //sc3.close();
     }
@@ -91,7 +113,6 @@ public class Movie {
         //sc3.close();
     }
     public void setShowingStatus(int theStatus){
-
         showingStatus = StatusEnum.values()[theStatus-1];
     }
     public void setLanguage(){
@@ -114,7 +135,7 @@ public class Movie {
     public String getLanguage(){
         return language;
     }
-    public String getType(){
+    public MovieTypes getType(){
         return type;
     }
     public String getPGrating(){
