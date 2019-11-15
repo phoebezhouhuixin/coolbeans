@@ -18,3 +18,6 @@ eew,0.0
 a,0.0
 poo,0.0
 cars,0.0
+Cars,0.0
+Up,0.0
+Toy Story,0.0

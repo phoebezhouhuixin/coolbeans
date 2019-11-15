@@ -46,8 +46,9 @@ public class ViewHistory {
         }*/
 		System.out.println("Enter your rating for the movie for an integer value between 0 to 5");
 		user_rating = sc8.nextInt();
+		sc8.nextLine();
 		System.out.println("Enter your review for the movie under double quotes");
-		user_review = sc8.next();
+		user_review = sc8.nextLine();
 		FileDb reviewDb = new FileDb();        
         reviewDb.setDbName("reviews");
         String [] reviewToAddToReviewDb = new String[] {movieTitle, user_rating.toString(), user_review };

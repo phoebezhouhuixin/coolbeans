@@ -9,6 +9,7 @@ import General.MovieTypes;
 import General.AgeTypes;
 import General.DayTypes;
 import Moviegoer.Search;
+import Moviegoer.ViewDetails;
 import Moviegoer.ViewHistory;
 //Admin imports
 import Admin.Login;
@@ -227,12 +228,18 @@ public class Main {
 				// 1. choose movie
 				else if (choice == 1) {
 					System.out.println("Welcome to movie booking system!");
-					System.out.println("Do you wish to: 1.Search for movie 2.View movie details 3. Start booking now ");
+					System.out.println("Do you wish to: 1.Movies overview 2.View single movie details 3. Start booking now ");
 					int subchoice = sc2.nextInt();
 					switch (subchoice) {
-						case 1: // TODO search for movie
+						case 1: 
+							Search s = new Search();
+							s.display();
+							break;
 
-						case 2: // TODO view movie details
+						case 2: 
+							ViewDetails v = new ViewDetails();
+							v.displaydetails();
+							break;
 						case 3: // start booking
 							// step 1: choose the movie
 							ArrayList<String> seatsChosenList = new ArrayList<String>();
@@ -314,13 +321,16 @@ public class Main {
 									break;
 								}
 							}
-					}
-					if (choice == 4) {
-						break;
-					}
+							break;
+					}					
 				}
-				sc2.close();
+				if (choice == 4) {
+					break;
+				}
 			}
+
+			sc2.close();
 		}
+		
 	}
 }

@@ -183,12 +183,19 @@ public class ModifyMovie {
     public void removeMovieInArray(String check_by_title, ArrayList<Movie> allMovies) {
     	FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
-    	// just removing it from the db
-    	movieDb.removeEntry("title", check_by_title);
     	
         for (int i = 0; i < numberOfMovies; i += 1) {
             if (allMovies.get(i).getTitle().equals(check_by_title)) {
-            	allMovies.get(i).setShowingStatus(4);
+                Movie newMovie = allMovies.get(i);
+                String cast = "";
+                for (String castMember : newMovie.getCast()) {
+                    cast += (castMember+";");
+                }
+                String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),StatusEnum.END_SHOWING.toString(), newMovie.getOverallRating().toString(), cast };
+                movieDb.removeEntry("title", check_by_title);
+                movieDb.addRecord(recordToAddToMovieDb);
+            	allMovies.get(i).setShowingStatus(4);        
+        
             }
         }
         this.allMovies = allMovies;

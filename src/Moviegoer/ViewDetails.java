@@ -8,6 +8,7 @@ import General.Movie;
 import General.Review;
 
 public class ViewDetails {
+	Scanner sc5 = new Scanner(System.in);
 	public void displaydetails(){
 		/**
 		 * Displays the attribute of the chosen movie as per the user's choice
@@ -17,7 +18,7 @@ public class ViewDetails {
     	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
 		String input_title;
 		int detail_choice=0;
-		Scanner sc5 = new Scanner(System.in);
+		
 		System.out.println("Enter the title of the movie whose details you wish to view: ");
 		input_title = sc5.nextLine();
 		for (Map<String, String> per_movie : movies) {
@@ -81,7 +82,6 @@ public class ViewDetails {
             	}
             }
 		}
-		sc5.close();
 	}
 	
 }

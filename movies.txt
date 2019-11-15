@@ -1,4 +1,5 @@
 title, synopsis, director, language, type, PGrating, status, overallRating, cast
-Cars, The car moves, Anderson, English, 2D, PG, Now Showing, 0, {Tom. Dick. Harry.}
 Up, The house flies, Karen, Malay, 3D, PG, Now Showing, 4.5, {Wilson. Wang. Wilfred.}
 Toy Story,The toys are alive,Bala,English,2D,PG,Now Showing, 4.9, {Alice. Bob. Daniel.}
+Cars 2,The car moves,Anderson,English,2D,PG,Now Showing,4.0,{Tom. Dick. Harry.}
+beans 2,can of beans,me,english,Blockbuster,R,Coming soon,0.0,r;
