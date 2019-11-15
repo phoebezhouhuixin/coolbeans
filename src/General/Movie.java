@@ -43,6 +43,7 @@ public class Movie {
         }
         this.overallrating  = Double.valueOf(overallRating);
         this.cast = cast;
+        castArray.add(cast);
     }
 
     public void setCast(ArrayList<String> theNames){

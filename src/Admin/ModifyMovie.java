@@ -5,20 +5,16 @@ import General.*;
 import fileDb.FileDb;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class ModifyMovie { 
     int numberOfMovies = 0;
     Scanner sc2 = new Scanner(System.in);
     ArrayList<Movie> allMovies;
+    
+    public ModifyMovie(ArrayList<Movie> allMovies) {
+    	this.allMovies = allMovies;
+    }
 
     /**
      * Creates a new movie (to be done by the staff).
@@ -128,27 +124,27 @@ public class ModifyMovie {
                             System.out.println("4: End of showing");
                             Integer theStatus = sc2.nextInt();
                             sc2.nextLine();
-                            currentRecord[6] = theStatus.toString();
+                            currentRecord[6] = StatusEnum.values()[theStatus-1].toString();
                             System.out.println("Successfully updated!");
                             break;
                         case 5:
                         	Movie temp4 = new Movie("temp");
                             temp4.setLanguage();
-                            currentRecord[1] = temp4.getLanguage();
+                            currentRecord[3] = temp4.getLanguage();
 //                            allMovies.get(i).setLanguage();
                             System.out.println("Successfully updated!");
                             break;
                         case 6:
                         	Movie temp5 = new Movie("temp");
                             temp5.setType();
-                            currentRecord[1] = temp5.getType().getMovieTypeName();
+                            currentRecord[4] = temp5.getType().getMovieTypeName();
 //                        	allMovies.get(i).setType();
                             System.out.println("Successfully updated!");
                             break;
                         case 7:
                         	Movie temp6 = new Movie("temp");
                             temp6.setPGrating();
-                            currentRecord[1] = temp6.getPGrating();
+                            currentRecord[5] = temp6.getPGrating();
 //                        	allMovies.get(i).setPGrating();;
                             System.out.println("Successfully updated!");
                             break;
@@ -177,21 +173,28 @@ public class ModifyMovie {
     
     /**
      * removes a movie from allMovies and the database
-     * @param check_by_title title of th emovie to be removed.
+     * @param check_by_title title of the movie to be removed.
      * @param allMovies stores all the current movies, previously loaded from a database.
      */
     public void removeMovieInArray(String check_by_title, ArrayList<Movie> allMovies) {
+    	String temp_cast=null;
     	FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
+    	ArrayList<Map<String, String>> moviesData = movieDb.readDataBase("movies");
+    	check_by_title = check_by_title.strip();
+    	System.out.println("Title is =>"+check_by_title);
     	
-        for (int i = 0; i < numberOfMovies; i += 1) {
+    	for (Map<String,String> movie: moviesData) {
+    		if (check_by_title.equals(movie.get("title"))){
+    			temp_cast = movie.get("cast");
+    		}
+    	}
+    	
+        for (int i = 0; i < allMovies.size(); i += 1) {
+        	System.out.println(allMovies.get(i).getTitle() + "-"+check_by_title);
             if (allMovies.get(i).getTitle().equals(check_by_title)) {
                 Movie newMovie = allMovies.get(i);
-                String cast = "";
-                for (String castMember : newMovie.getCast()) {
-                    cast += (castMember+";");
-                }
-                String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),StatusEnum.END_SHOWING.toString(), newMovie.getOverallRating().toString(), cast };
+                String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),StatusEnum.END_SHOWING.toString(), newMovie.getOverallRating().toString(), temp_cast };
                 movieDb.removeEntry("title", check_by_title);
                 movieDb.addRecord(recordToAddToMovieDb);
             	allMovies.get(i).setShowingStatus(4);        

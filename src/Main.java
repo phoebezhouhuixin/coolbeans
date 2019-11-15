@@ -107,7 +107,7 @@ public class Main {
 			Scanner sc1 = new Scanner(System.in);
 			// assuming staff
 			int choice1 = 0, choice2 = 0, choice3 = 0;
-			ModifyMovie modify = new ModifyMovie();
+			ModifyMovie modify = new ModifyMovie(allMovies);
 			TicketPrice tp = new TicketPrice();
 			boolean loopCtrl = true;
 			while (loopCtrl) {
