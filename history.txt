@@ -1,4 +1,5 @@
 username, password, name, phNo, email, cinemaType, movie, movieType, ageType, dayType, price, txnId
 r, r, rohan, 5646421, rohan1gautam@gmail.com, Gold, ho, Blockbuster, senior, weekend, 27.0, PVR201911062228
 r, r, rohn, 343434343, r@f.com, Gold, toy story, Blockbuster, child, weekend, 26.0, PVR201911062234
-r,  r, r, 43244, e@g.c,  Gold, r, 3D,  senior, weekend, 24.0, PVR201911062236
+r,  r, r, 43244, e@g.c,  Gold, r, 3D,  senior, weekend, 24.0, PVR201911062236r,r,phoebe,98431234,pb@gmail.com,Silver,2D,Senior,Weekday,11.0,GV 201911151053
+r,r,phoebe,98431234,pb@gmail.com,Silver,2D,Adult,Weekend,14.0,GV 201911151055

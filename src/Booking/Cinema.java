@@ -1,37 +1,42 @@
 package Booking;
 
 import java.util.Scanner;
+import General.CinemaTypes;
+import java.util.EnumMap;
 
 public class Cinema {
+	/**
+	 * Keeps track of current cinema type
+	 */
 	public String cinematype;
+	/**
+	 * Keeps track of current cinema cost
+	 */
 	public Double cost;
-	public String day;
-	public String time;
 	
 	Scanner sc = new Scanner(System.in);
-	
-	public Cinema(String cinema, double cost) {
-		this.cinematype = cinema;
-		this.cost = cost;
-		getDayTime();
+	/**
+	 * Constructor which gets the particular cinema type from our CinemaType enum, and sets the cost for the particular cinema.
+	 * @param cinema
+	 * @param cinemaPriceMap
+	 */
+	public Cinema(CinemaTypes cinema, EnumMap<CinemaTypes,Double> cinemaPriceMap) {
+		cinematype = cinema.getCinemaTypeName();
+		this.cost = cinemaPriceMap.get(cinema);
 	}
 	
-	public void setCinema(String cinema) {
-		this.cinematype = cinema;
+	/**
+	 * Setter for current cinema type
+	 * @param cinema
+	 */
+	public void setCinema(CinemaTypes cinema) {
+		this.cinematype = cinema.getCinemaTypeName();
 	}
-	
+	/**
+	 * getter for current cinema type
+	 * @return
+	 */
 	public String getCinemaType() {
 		return cinematype;
-	}
-	
-	public void getDayTime() {
-		// TODO: accept details in specified formats 
-		System.out.print("Enter Day : ");
-		this.day = sc.next();
-		System.out.println();
-		
-		System.out.print("Enter time : ");
-		this.time = sc.next();
-		System.out.println();
 	}
 }
