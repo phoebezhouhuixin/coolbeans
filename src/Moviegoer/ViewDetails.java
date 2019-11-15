@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import fileDb.FileDb;
 import General.Movie;
-import General.Review;
 
 public class ViewDetails {
 	Scanner sc5 = new Scanner(System.in);
