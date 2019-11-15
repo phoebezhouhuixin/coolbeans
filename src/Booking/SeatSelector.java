@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class SeatSelector {
 	public String choice;
+	Scanner sc = new Scanner(System.in);
 	private ArrayList<String> seatsChosenList;
 	
 	public SeatSelector(ArrayList<String> seatsChosenList) {
@@ -74,8 +75,7 @@ public class SeatSelector {
 	public String getSelectedSeat() {
 		// TODO : add functionality of selecting multiple seats (if required)
 		while (true) {
-			showSeats();
-			Scanner sc = new Scanner(System.in);
+			showSeats();			
 			System.out.println("Enter seat choice");
 			choice = sc.next();
 			choice = choice.toUpperCase();
@@ -100,7 +100,6 @@ public class SeatSelector {
 			else {
 				this.seatsChosenList.remove(this.seatsChosenList.size()-1);
 			}
-			sc.close();
 		}
 //		System.out.println("You selected " + choice);
 		
