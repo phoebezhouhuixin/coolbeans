@@ -264,4 +264,70 @@ public class ModifyMovie {
         }
         this.allMovies = allMovies;
     }
+    
+    public void createShowtimes() {
+    	System.out.println("Enter movie title: ");
+        String theTitle = sc2.nextLine();
+        System.out.println("Enter cineplex name: ");
+        String cineplexName = sc2.nextLine();
+        System.out.println("Enter movie type 1.2D 2.3D 3.Blockbuster: ");
+        String type_of_movie = sc2.nextLine();
+        System.out.println("Enter cinema type 1.Silver 2.Gold 3.Platinum: ");
+        String type_of_cinema = sc2.nextLine();
+        System.out.println("Enter day when movie is played: ");
+        String day_of_showing = sc2.nextLine();
+        System.out.println("Enter time when movie is played: ");
+        String time_of_showing = sc2.nextLine();
+        System.out.println("Enter day type 1.Weekday 2.Weekend 3.Holiday: ");
+        String day_type = sc2.nextLine();
+        FileDb showtimeDb = new FileDb();
+        showtimeDb.setDbName("showtimes");
+        String[] recordToAddToShowtimesDb = new String[] {theTitle, cineplexName, type_of_movie, type_of_cinema, day_of_showing, time_of_showing, day_type};
+        showtimeDb.addRecord(recordToAddToShowtimesDb);
+        System.out.println("New showtime successfully created!");
+        sc2.nextLine();
+    }
+    
+    public void updateShowtimes() {
+    	FileDb showtimes = new FileDb();
+    	showtimes.setDbName("showtimes");
+		ArrayList<Map<String, String>> showtimesData = showtimes.readDataBase("showtimes");
+		for (Integer i = 0; i<showtimesData.size(); i+=1) {
+			Map<String, String> current = showtimesData.get(i);
+			System.out.println(i.toString() + " : " + current );
+		}
+		System.out.println("Enter row you would like to modify: ");
+		int choice = sc2.nextInt();
+		sc2.nextLine();
+		Map<String, String> toModify = showtimesData.get(choice);
+		//TODO : get user input for these
+		System.out.println("Enter attribute you would like to modify: ");
+		String colName = sc2.nextLine();
+		System.out.println("Enter new value of attribute: ");
+		String changeTo = sc2.nextLine();
+//		String colName = "dayType";
+//		String changeTo = "PublicHoliday";
+		
+		toModify.remove(colName);
+		toModify.put(colName, changeTo);
+		String [] recToAdd = new String[] {toModify.get("movieTitle"),toModify.get("cineplex"),toModify.get("movieType"),toModify.get("cinemaType"),toModify.get("day"),toModify.get("time"),toModify.get("dayType"),};
+		
+		showtimes.removeEntryByIndex(choice+1); //+1 because it's not counting col names row
+		showtimes.addRecord(recToAdd);
+		System.out.println("Updated!");
+    }
+    public void removeShowtimes() {
+    	FileDb showtimes = new FileDb();
+    	showtimes.setDbName("showtimes");
+		ArrayList<Map<String, String>> showtimesData = showtimes.readDataBase("showtimes");
+		for (Integer i = 0; i<showtimesData.size(); i+=1) {
+			Map<String, String> current = showtimesData.get(i);
+			System.out.println(i.toString() + " : " + current );
+		}
+		System.out.println("Enter row you would like to remove: ");
+		int choice = sc2.nextInt();
+		sc2.nextLine();
+		showtimes.removeEntryByIndex(choice+1); //+1 because it's not counting col names row
+		System.out.println("Removed!");
+    }
 }

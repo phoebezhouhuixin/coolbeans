@@ -106,7 +106,7 @@ public class Main {
 		if (staff == true && auth) {
 			Scanner sc1 = new Scanner(System.in);
 			// assuming staff
-			int choice1 = 0, choice2 = 0, choice3 = 0;
+			int choice1 = 0, choice2 = 0, choice3 = 0, choice4 =0;
 			ModifyMovie modify = new ModifyMovie(allMovies);
 			TicketPrice tp = new TicketPrice();
 			boolean loopCtrl = true;
@@ -145,6 +145,23 @@ public class Main {
 								break;
 						}
 						break;
+					case 2:
+						System.out.println("What do you wish to do: 1.Create 2.Update 3.Remove showtimes");
+						choice4 = sc1.nextInt();
+						sc1.nextLine();
+						switch (choice4) {
+							case 1:
+								modify.createShowtimes();
+								break;
+							case 2 :
+								modify.updateShowtimes();
+								break;
+							case 3:
+								modify.removeShowtimes();
+								break;
+						}
+						break;
+						
 					case 3:
 						System.out.println(
 								"Do you wish to change the price for: 1. Type of movie 2. Type of cinema 3. Type of movie goer 4. Type of day ");
