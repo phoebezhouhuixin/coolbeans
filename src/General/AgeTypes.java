@@ -11,6 +11,10 @@ public enum AgeTypes {
     AgeTypes(String ageName) {
         this.ageName = ageName;
     }
+    /**
+     * Returns the agename among: Child, Student, Senior and Adult to accordingly compute the ticket price
+     * @return the age type
+     */
     public String getAgeName() {
         return this.ageName;
     }

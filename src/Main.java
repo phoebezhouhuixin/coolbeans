@@ -6,6 +6,7 @@ import java.util.*;
 import General.Movie;
 import General.CinemaTypes;
 import General.MovieTypes;
+import General.StatusEnum;
 import General.AgeTypes;
 import General.DayTypes;
 import Moviegoer.Search;
@@ -247,8 +248,12 @@ public class Main {
 
 							Integer i = 1;
 							for (Movie theMovie : allMovies) {
-								System.out.println("Movie " + i.toString() + ": " + theMovie.getTitle());
-								i++;
+								if (theMovie.getShowingStatus().equals(StatusEnum.END_SHOWING))
+									continue;
+								else{
+									System.out.println("Movie " + i.toString() + ": " + theMovie.getTitle());
+									i++;
+								}
 							}
 
 							moviechoice = allMovies.get(sc2.nextInt() - 1).getTitle();

@@ -11,6 +11,11 @@ import fileDb.FileDb;
 public class ViewHistory {
 	String un,pw;
 	Scanner sc8 = new Scanner(System.in);
+	/**
+	 * Displays the moviegoer's booking history of all their past movie ticket purchases
+	 * @param un username to identify the user from booking history database
+	 * @param pw password to validate the user from booking history database
+	 */
 	public void view(String un, String pw){
 		FileDb histDb = new FileDb();
 		histDb.setDbName("history");
@@ -32,6 +37,10 @@ public class ViewHistory {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
 	}
+	/**
+	 * Adds the Moviegoer's review: comment and rating for the movie of their choice
+	 * @param movieTitle the movie that the MovieGoer wishes to review
+	 */
 	public void leaveReview(String movieTitle){
 		String user_review;
 		Integer user_rating;
