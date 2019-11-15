@@ -8,6 +8,9 @@ import fileDb.FileDb;
 
 public class Search {
 	public void display(){
+		/**
+		 * Displays every movie from database and their respective title and showing status
+		 */
 		FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
     	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
