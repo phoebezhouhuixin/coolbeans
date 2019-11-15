@@ -9,6 +9,9 @@ import General.Review;
 
 public class ViewDetails {
 	public void displaydetails(){
+		/**
+		 * Displays the attribute of the chosen movie as per the user's choice
+		 */
 		FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
     	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
