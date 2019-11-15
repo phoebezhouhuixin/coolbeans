@@ -9,12 +9,20 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class FileDb {
+	/**
+	 * keeps track of current file being processed.
+	 */
 	private InputStream is;
 	private OutputStream os;
 	private FileWriter fw;
 	public boolean isCreated = false;
 	public String currentDbName;
 
+	/**
+	 * Creates a new text file datatabase with the name specified by dbName
+	 * @param dbName
+	 * @return
+	 */
 	public boolean makeDataBase(String dbName) {
 		try {
 			this.fw = new FileWriter(dbName + ".txt");
@@ -27,6 +35,13 @@ public class FileDb {
 		}
 	}
 
+	/**
+	 * Reads the database with the specified name.
+	 * The data is stored in comma seperated value(CSV) format, in a .txt file (text file database was one of the requirements).
+	 * This method also handles parsing the CSV in to an ArrayList of Maps between the column name and the particular item.
+	 * @param dbName
+	 * @return
+	 */
 	public ArrayList<Map<String,String>> readDataBase(String dbName) {
 		ArrayList<Map<String,String>> data = new ArrayList<Map<String,String>>();
 		try {
@@ -61,6 +76,13 @@ public class FileDb {
 		return data;
 	}
 	
+	/**
+	 * Removes a row in the database, the location of which is determined by what value it has in it's column.
+	 * For example, colName could be id and compareWith could be 4, to remove the row with the id 4.
+	 * @param colName
+	 * @param compareWith
+	 * @return
+	 */
 	public boolean removeEntry(String colName, String compareWith) {
 		String dbName = this.currentDbName;
 		try {
@@ -90,29 +112,7 @@ public class FileDb {
 			return tempFile.renameTo(inputFile);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-//		//Compares values at rowName with compareWith
-//		ArrayList<Map<String,String>> data = this.readDataBase(dbName);
-//		ArrayList<Map<String,String>> newData = new ArrayList<Map<String,String>>();
-//		
-//		for (int i=0; i<data.size(); i++) {
-//			Map<String,String> row = data.get(i);
-//			String[] record = new String[row.size()];
-//			if(row.get(colName).equals(compareWith) == false) {
-//				newData.add(row);
-//			}
-//		}
-//		try {
-//			this.fw = new FileWriter((this.currentDbName + ".txt")); // open new file
-//			for (int i=0; i<newData.size(); i++) {
-//				Map<String,String> row = newData.get(i);
-//				String[] record = new String[row.size()];
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
+		}	
 		return false;
 		
 	}
@@ -121,6 +121,11 @@ public class FileDb {
 		this.currentDbName = name;
 	}
 	
+	/**
+	 * Converts given list of Strings(record) into comma seperated values, and appends them to the end of the database.
+	 * @param record
+	 * @return
+	 */
 	public boolean addRecord(String[] record) {
 		try {
 			if(this.isCreated == false) {
@@ -141,9 +146,12 @@ public class FileDb {
 			return false;
 		}
 	}
-
+	/**
+	 * For testing purposes while this class was being written.
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		FileDb db = new FileDb();
+		// FileDb db = new FileDb();
 		//make db
 //		db.makeDataBase("records");
 		// add records

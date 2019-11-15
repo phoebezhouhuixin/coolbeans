@@ -4,34 +4,27 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SeatSelector {
+	/**
+	 * keeps track of current seat chosen by user, if any.
+	 */
 	public String choice;
 	Scanner sc = new Scanner(System.in);
+	/**
+	 * keeps track of previously chosen seats by user, if any.
+	 */
 	private ArrayList<String> seatsChosenList;
 	
+	/**
+	 * Constructor 
+	 * @param seatsChosenList keeps track of previously chosen seats by user, if any. 
+	 */
 	public SeatSelector(ArrayList<String> seatsChosenList) {
 		this.seatsChosenList =seatsChosenList; 
 	}
 	
-//	public void showSeats() {
-//		Integer rows = 10, cols = 10;
-//		Integer A = 65, Z = 90;
-//		// print column listing
-//		System.out.print("\t");
-//		for (Integer i = 0; i < cols; i += 1) {
-//			System.out.print(i.toString() + "\t");
-//		}
-//		System.out.println();
-//		// print row listing
-//		for (int i = A; (i < A + rows) && (A + rows <= Z); i++) {
-//			System.out.print(Character.toString((char) i) + "\t");
-//			for (int j = 0; j < cols; j += 1) {
-//				System.out.print("[]" + "\t");
-//			}
-//			System.out.println();
-//		}
-//	}
-
-	// function overloading for showSeats [diff parameter]
+	/**
+	 * Shows the seat selection menu, along with currently chosen seats
+	 */
 	public void showSeats() {
 		Integer rows = 10, cols = 10;
 		Integer A = 65, Z = 90;
@@ -72,6 +65,11 @@ public class SeatSelector {
 		}
 	}
 	
+	/**
+	 * Gets Seat of choice from the user, via prompts.
+	 * Also performs error checking on validity of choice.
+	 * @return
+	 */
 	public String getSelectedSeat() {
 		// TODO : add functionality of selecting multiple seats (if required)
 		while (true) {

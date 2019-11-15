@@ -19,6 +19,11 @@ public class ModifyMovie {
     int numberOfMovies = 0;
     Scanner sc2 = new Scanner(System.in);
     ArrayList<Movie> allMovies;
+
+    /**
+     * Creates a new movie (to be done by the staff).
+     * @param allMovies stores the new movie that was just created.
+     */
     public void createMovie(ArrayList<Movie> allMovies){
         System.out.println("Enter movie title: ");
         String theTitle = sc2.nextLine();
@@ -56,6 +61,11 @@ public class ModifyMovie {
         addNewMovieToArray(newMovie,allMovies);
         this.allMovies = allMovies;
     }
+    /**
+     * Adds New movie to the global reference of all movies.
+     * @param newMovie The movie that is added to allMovies
+     * @param allMovies stores all the current movies, previously loaded from a database.
+     */
     public void addNewMovieToArray(Movie newMovie , ArrayList<Movie> allMovies){
         this.numberOfMovies+=1;
         allMovies.add(newMovie);
@@ -71,20 +81,17 @@ public class ModifyMovie {
         this.allMovies = allMovies;
     }
     
+    /**
+     * Updates an existing movie, both in the allMovie global reference and in the database.
+     * @param check_by_title the title of the movie that needs to be changed
+     * @param allMovies stores all the current movies, previously loaded from a database.
+     */
     public void updateExistingMovieInArray(String check_by_title, ArrayList<Movie> allMovies){
-    	// TODO : look into this: -> we are assuming contents of array are same as contents of db here
     	FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
     	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
     	System.out.println(movies.toString());
         int update_choice=0;
-        //if needed..
-        // int allmovie_index = -1;
-        // for (int i =0; i < allMovies.size(); i+=1){
-        //     if (allMovies.get(i).getTitle().equals(check_by_title)) {
-        //     	allmovie_index = i;
-        //     }
-        // }
         
         for (Map<String,String> movie : movies){
         	String[] currentRecord = new String[] {movie.get("title"),movie.get("synopsis"),movie.get("director"),movie.get("language"),movie.get("type"),movie.get("PGrating"),movie.get("status"), movie.get("overallRating"),movie.get("cast"),};
@@ -160,10 +167,19 @@ public class ModifyMovie {
         this.allMovies = allMovies;
     }
     
+    /**
+     * Getter for the allmovies reference.
+     * @return
+     */
     public ArrayList<Movie> getAllMovies(){
     	return this.allMovies;
     }
     
+    /**
+     * removes a movie from allMovies and the database
+     * @param check_by_title title of th emovie to be removed.
+     * @param allMovies stores all the current movies, previously loaded from a database.
+     */
     public void removeMovieInArray(String check_by_title, ArrayList<Movie> allMovies) {
     	FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
@@ -177,6 +193,11 @@ public class ModifyMovie {
         }
         this.allMovies = allMovies;
     }
+
+    /**
+     * Prompts and displays movies by desired ranking scheme.
+     * @param allMovies
+     */
     public void displayMovieRanking(ArrayList<Movie> allMovies){
 //    	Scanner sc2 = new Scanner(System.in);
         int display_choice = 0;
@@ -211,25 +232,7 @@ public class ModifyMovie {
             	}
             	for (Map<String, String> per_sale : sales_new){
             		System.out.println(per_sale);
-//                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
                 }
-//            	//System.out.println("The sales data are: "+sales_new);
-//                Set<Entry<Double, String>> entries = map1.entrySet();
-//                TreeMap<Double, String> sorted = new TreeMap<>(map1);
-//                Set<Entry<Double, String>> mappings = sorted.entrySet();
-//                System.out.println("Movie Ranking are as follows (bottom is the highest ranked): ");
-//                System.out.println("size of array: "+mappings.size());
-//                for(Entry<Double, String> mapping : mappings){
-//                	/*if (mappings.size()>5){
-//                		if (check1<(mappings.size()-5))
-//                			continue;
-//                		else
-//                			System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
-//                		check1++;
-//                	}
-//                	else*/
-//                	System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
-//                }
             	break;
             case 2:
             	int check2=1;
@@ -247,24 +250,6 @@ public class ModifyMovie {
             		System.out.println(per_movie.get("title")+"==>"+per_movie.get("overallRating"));
 //                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
                 }
-                /*for (Map<String, String> per_movie : movies){
-                    map2.put(Double.parseDouble(per_movie.get("overallRating")),per_movie.get("title"));
-                }
-                Set<Entry<Double, String>> entries2 = map2.entrySet();
-                TreeMap<Double, String> sorted2 = new TreeMap<>(map2);
-                Set<Entry<Double, String>> mappings2 = sorted2.entrySet();
-                System.out.println("Movie Ranking are as follows: (bottom is the highest ranked):");
-                for(Entry<Double, String> mapping : mappings2){
-                	if (mappings2.size()>5){
-                		if (check2<(mappings2.size()-5))
-                			continue;
-                		else
-                			System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
-                		check2++;
-                	}
-                	else
-                		System.out.println(mapping.getKey() + " ==> " + mapping.getValue());
-                }*/
                 break;
         }
         this.allMovies = allMovies;

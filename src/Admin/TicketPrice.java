@@ -29,6 +29,10 @@ public class TicketPrice {
 
 	}*/
 
+	/**
+	 * Calculates the ticketprice for a particular movie, that is selected by the user
+	 * @param moviePriceMap the price mapping using which we calculate movie price based on user's input.
+	 */
 	public void tpmovietype(EnumMap<MovieTypes, Double> moviePriceMap) {
 		// double twod = 4.00, threed = 5.00, bb = 6.00;
 		int movietype_choice = 0;
@@ -65,6 +69,10 @@ public class TicketPrice {
 		System.out.println();
 	}
 
+	/**
+	 * Calculates the ticketprice for a particular cinema, that is selected by the user (one of the factors used to calculate overall ticket price)
+	 * @param cinemaPriceMap the price mapping using which we calculate price associated with a particular cinema input.
+	 */
 	public void tpcinema(EnumMap<CinemaTypes, Double> cinemaPriceMap) {
 		// double GoldExtra = 12.00, SilverExtra = 10.00, PlatinumExtra = 15.00;
 
@@ -93,6 +101,10 @@ public class TicketPrice {
 			System.out.println();
 	}
 
+	/**
+	 * Calculates the age price for a particular cinema, that is selected by the user (one of the factors used to calculate overall ticket price)
+	 * @param agePriceMap the price mapping using which we calculate price associated with a particular age.
+	 */
 	public void tpage(EnumMap<AgeTypes, Double> agePriceMap) {
 		//double student = 4.00, senior = 3.00, child = 2.00;
 		int age_choice = 0;
@@ -121,6 +133,10 @@ public class TicketPrice {
 		System.out.println();
 	}
 
+	/**
+	 * Calculates the day price for a particular cinema, that is selected by the user (one of the factors used to calculate overall ticket price)
+	 * @param dayPriceMap the price mapping using which we calculate price associated with a particular day.
+	 */
 	public void tpday(EnumMap<DayTypes, Double> dayPriceMap) {
 		// double weekdays = 4.00, weekends = 5.00, holidays = 6.00;
 		int day_choice = 0;

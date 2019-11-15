@@ -35,6 +35,14 @@ public class Ticket {
 
 	Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Constructor for this class.
+	 * @param selectedShow  initalised with user's choice of show.
+	 * @param cinemaPriceMap initalised with user's choice of cinema's price.
+	 * @param moviePriceMap initalised with user's choice of movie's price.
+	 * @param agePriceMap initalised with user's age's price.
+	 * @param dayPriceMap initalised with user's choice of day's price.
+	 */
 	public Ticket(Map<String, String> selectedShow, EnumMap<CinemaTypes, Double> cinemaPriceMap, EnumMap<MovieTypes,
 			Double> moviePriceMap, EnumMap<AgeTypes, Double> agePriceMap, EnumMap<DayTypes, Double> dayPriceMap){
 		for (CinemaTypes cinemaType: CinemaTypes.values()){
@@ -68,10 +76,18 @@ public class Ticket {
 
 	}
 	
+	/**
+	 * Getter for the current ticket price.
+	 * @return
+	 */
 	public Double getTicketPrice() {
 		return this.ticketPrice;
 	}
 	
+	/**
+	 * Gets age of MovieGoer from user.
+	 * @return
+	 */
 	public AgeTypes getAgeType() {
 
 		//age choice
@@ -84,6 +100,11 @@ public class Ticket {
 		else if (age_choice == 3) return AgeTypes.STUDENT;
 		else return AgeTypes.ADULT;
 	}
+
+	/**
+	 * Setter for the final transaction ID in the specified format. Uses current year, month, date, hour and minute along with cinema ID to generate a unique ID.
+	 * @param c
+	 */
 	public void setTransactionId(Cineplex c) {
 		String cinemaId = c.cineplexLocation.substring(0, 3); // using first 3 letters of cinema name as cinema ID
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmm");  
