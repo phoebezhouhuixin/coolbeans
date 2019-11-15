@@ -189,10 +189,10 @@ public class Main {
 						FileDb movieDb = new FileDb();
 						movieDb.setDbName("movies");
 						ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
-						System.out.println(String.format("    %7s %15s %10s %15s %9s %10s %20s %15s %7s", "title", "synopsis", "director", "language", "type", "PGrating", "status", "overallRating", "cast"));
+						System.out.println(String.format("    %10s %25s %10s %15s %14s %10s %20s %15s %7s", "title", "synopsis", "director", "language", "type", "PGrating", "status", "overallRating", "cast"));
 						Integer counter = 1;
 						for (Map<String, String> movie : movies) {
-							System.out.println(counter.toString() + " : " + String.format("%7s %15s %10s %15s %9s %10s %20s %15s %7s", movie.get("title"), movie.get("synopsis"), movie.get("director"), movie.get("language"), movie.get("type"), movie.get("PGrating"), movie.get("status"), movie.get("overallRating"), movie.get("cast")));//movie.get("title")+", "+movie.get("synopsis"))+", "+movie.get("director")+", "+movie.get("language")+", "+movie.get("type")+", "+movie.get("PGrating")+", "+movie.get("status")+ ", "+movie.get("overallRating")+", "+movie.get("cast"));
+							System.out.println(counter.toString() + " : " + String.format("%10s %25s %10s %15s %14s %10s %20s %15s %7s", movie.get("title"), movie.get("synopsis"), movie.get("director"), movie.get("language"), movie.get("type"), movie.get("PGrating"), movie.get("status"), movie.get("overallRating"), movie.get("cast")));//movie.get("title")+", "+movie.get("synopsis"))+", "+movie.get("director")+", "+movie.get("language")+", "+movie.get("type")+", "+movie.get("PGrating")+", "+movie.get("status")+ ", "+movie.get("overallRating")+", "+movie.get("cast"));
 							counter += 1;
 						}
 						break;
