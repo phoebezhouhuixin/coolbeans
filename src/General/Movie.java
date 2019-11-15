@@ -16,7 +16,6 @@ public class Movie {
     private int runtime,type_choice,PGrating_choice;
     Scanner sc = new Scanner (System.in);
     // not in the constructor
-    private ArrayList<Review> reviewArray = new ArrayList<Review>(); // created by default every time we create a new movie.
     private double overallrating =0;
 
     // implement all the constructors, getters and setters later
@@ -233,9 +232,6 @@ public class Movie {
      */
     public ArrayList<String> getCast(){
         return castArray;
-    }
-    public ArrayList<Review> getReviewArray() {
-        return reviewArray;
     }
     /**
      * Calculates and returns the overall rating of the movie chosen by taking an average of all the ratings available for that movie 

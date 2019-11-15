@@ -107,7 +107,7 @@ public class Main {
 		if (staff == true && auth) {
 			Scanner sc1 = new Scanner(System.in);
 			// assuming staff
-			int choice1 = 0, choice2 = 0, choice3 = 0;
+			int choice1 = 0, choice2 = 0, choice3 = 0, choice4 =0;
 			ModifyMovie modify = new ModifyMovie(allMovies);
 			TicketPrice tp = new TicketPrice();
 			boolean loopCtrl = true;
@@ -146,6 +146,23 @@ public class Main {
 								break;
 						}
 						break;
+					case 2:
+						System.out.println("What do you wish to do: 1.Create 2.Update 3.Remove showtimes");
+						choice4 = sc1.nextInt();
+						sc1.nextLine();
+						switch (choice4) {
+							case 1:
+								modify.createShowtimes();
+								break;
+							case 2 :
+								modify.updateShowtimes();
+								break;
+							case 3:
+								modify.removeShowtimes();
+								break;
+						}
+						break;
+						
 					case 3:
 						System.out.println(
 								"Do you wish to change the price for: 1. Type of movie 2. Type of cinema 3. Type of movie goer 4. Type of day ");
@@ -173,10 +190,10 @@ public class Main {
 						FileDb movieDb = new FileDb();
 						movieDb.setDbName("movies");
 						ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
-						System.out.println(String.format("    %7s %15s %10s %15s %9s %10s %20s %15s %7s", "title", "synopsis", "director", "language", "type", "PGrating", "status", "overallRating", "cast"));
+						System.out.println(String.format("    %10s %25s %10s %15s %14s %10s %20s %15s %7s", "title", "synopsis", "director", "language", "type", "PGrating", "status", "overallRating", "cast"));
 						Integer counter = 1;
 						for (Map<String, String> movie : movies) {
-							System.out.println(counter.toString() + " : " + String.format("%7s %15s %10s %15s %9s %10s %20s %15s %7s", movie.get("title"), movie.get("synopsis"), movie.get("director"), movie.get("language"), movie.get("type"), movie.get("PGrating"), movie.get("status"), movie.get("overallRating"), movie.get("cast")));//movie.get("title")+", "+movie.get("synopsis"))+", "+movie.get("director")+", "+movie.get("language")+", "+movie.get("type")+", "+movie.get("PGrating")+", "+movie.get("status")+ ", "+movie.get("overallRating")+", "+movie.get("cast"));
+							System.out.println(counter.toString() + " : " + String.format("%10s %25s %10s %15s %14s %10s %20s %15s %7s", movie.get("title"), movie.get("synopsis"), movie.get("director"), movie.get("language"), movie.get("type"), movie.get("PGrating"), movie.get("status"), movie.get("overallRating"), movie.get("cast")));//movie.get("title")+", "+movie.get("synopsis"))+", "+movie.get("director")+", "+movie.get("language")+", "+movie.get("type")+", "+movie.get("PGrating")+", "+movie.get("status")+ ", "+movie.get("overallRating")+", "+movie.get("cast"));
 							counter += 1;
 						}
 						break;

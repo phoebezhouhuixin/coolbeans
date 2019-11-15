@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import General.Movie;
-import General.Review;
 import fileDb.FileDb;
 public class ViewHistory {
 	String un,pw;

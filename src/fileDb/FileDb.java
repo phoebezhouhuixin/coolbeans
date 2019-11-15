@@ -117,6 +117,32 @@ public class FileDb {
 		
 	}
 	
+	public boolean removeEntryByIndex(int index) {
+		String dbName = this.currentDbName;
+		try {
+			this.is = new FileInputStream(dbName + ".txt");
+			File inputFile = new File(dbName + ".txt");
+			File tempFile = new File("myTempFile.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+			int count = 0;
+			Scanner sc = new Scanner(is);
+			while (sc.hasNextLine()) {
+				String line = sc.nextLine();
+				if(index != count) {
+					writer.write(line+System.getProperty("line.separator"));
+				}
+				count+=1;
+			}
+			writer.close(); 
+			sc.close();
+			return tempFile.renameTo(inputFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return false;
+		
+	}
+	
 	public void setDbName(String name) {
 		this.currentDbName = name;
 	}
@@ -151,7 +177,7 @@ public class FileDb {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// FileDb db = new FileDb();
+//		 FileDb db = new FileDb();
 		//make db
 //		db.makeDataBase("records");
 		// add records
@@ -164,7 +190,7 @@ public class FileDb {
 //		ArrayList<Map<String,String>> data = db.readDataBase("records"); // making you pass name so you know which db you're reading from
 //		System.out.println(data.toString());
 ////		
-//		db.removeEntry("name", "avengers");
+//		db.removeEntryByIndex(2);
 //		db.addRecord(new String[]{"4", "BOONts", "3"});
 //		System.out.println(db.readDataBase("records").toString());
 
