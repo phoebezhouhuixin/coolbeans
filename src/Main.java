@@ -265,7 +265,7 @@ public class Main {
 
 							Integer i = 1;
 							for (Movie theMovie : allMovies) {
-								if (theMovie.getShowingStatus().equals(StatusEnum.END_SHOWING))
+								if (theMovie.getShowingStatus().toString().equals(StatusEnum.END_SHOWING.toString()))
 									continue;
 								else{
 									System.out.println("Movie " + i.toString() + ": " + theMovie.getTitle());
