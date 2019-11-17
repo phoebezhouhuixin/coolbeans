@@ -181,7 +181,8 @@ public class Movie {
         return showingStatus;
     }
     /**
-     * Returns the synopsis of the movie
+     * Returns the synopsis of the current movie
+     * @return synopsis of movie
      */
     public String getSynopsis(){
         return synopsis;
@@ -194,7 +195,8 @@ public class Movie {
         return language;
     }
     /**
-     * Returns the type of the movie among: 2D, 3D and Blockbuster
+     * Returns the type of mvoie among 2D, 3D and Blockbuster
+     * @return type of movie
      */
     public MovieTypes getType(){
         return type;
@@ -207,7 +209,8 @@ public class Movie {
         return PGrating;
     }
     /**
-     * Returns the overall rating of the movie
+     * Returns the overall rating of current movie
+     * @return the calculated rating
      */
     public Double getOverallRating(){
     	return calcOverallRating(this.getTitle());
@@ -234,7 +237,10 @@ public class Movie {
         return castArray;
     }
     /**
+     * /**
      * Calculates and returns the overall rating of the movie chosen by taking an average of all the ratings available for that movie 
+     * @param movie_name name of the movie you wish to calculate the overall rating for
+     * @return the over all rating
      */
     public Double calcOverallRating(String movie_name){
         double sum = 0;
@@ -255,7 +261,8 @@ public class Movie {
         return overallrating;
     }
     /**
-     * Calculates and returns the overall sales of the movie chosen by taking an average of all the ratings available for that movie 
+     *  Calculates and adds to database the sales of the movie chosen by taking the sum of each sale available for that movie from booking history 
+     * @param movie_name name of the movie to calculate the sales for
      */
     public void calcTicketSales(String movie_name){
         Double sales = 0.0;
