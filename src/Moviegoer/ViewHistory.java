@@ -7,7 +7,8 @@ import java.util.Map;
 
 import General.Movie;
 import fileDb.FileDb;
-public class ViewHistory {
+import General.ViewableWithAuth;
+public class ViewHistory extends ViewableWithAuth{
 	String un,pw;
 	Scanner sc8 = new Scanner(System.in);
 	/**
@@ -15,10 +16,10 @@ public class ViewHistory {
 	 * @param un username to identify the user from booking history database
 	 * @param pw password to validate the user from booking history database
 	 */
-	public void view(String un, String pw){
+	public void displayAll(String filename, String un, String pw){
 		FileDb histDb = new FileDb();
 		histDb.setDbName("history");
-		ArrayList<Map<String, String>> histData = histDb.readDataBase("history");
+		ArrayList<Map<String, String>> histData = histDb.readDataBase(filename);
 		boolean auth = false;
 		for (Map<String, String> user : histData) {
 			if (user.get("username").equals(un) && user.get("password").equals(pw)) {

@@ -30,6 +30,7 @@ public class Ticket {
 	public DayTypes dayType;
 	public String transactionID;
 	private Double ticketPrice;
+	public String movieTitle;
 	
 	Cineplex c;
 
@@ -57,7 +58,7 @@ public class Ticket {
 			if (dayType.getDayName().equals(selectedShow.get("dayType")))
 				this.dayType = dayType;
 		}
-
+		movieTitle = selectedShow.get("movieTitle");
 		c = new Cineplex(selectedShow.get("cineplex"));
 		ageType = getAgeType();
 

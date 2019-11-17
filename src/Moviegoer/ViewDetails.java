@@ -5,16 +5,16 @@ import java.util.Scanner;
 
 import fileDb.FileDb;
 import General.Movie;
-
-public class ViewDetails {
+import General.Viewable;
+public class ViewDetails extends Viewable{
 	Scanner sc5 = new Scanner(System.in);
 	/**
 	* Displays the attribute of the chosen movie as per the user's choice
 	*/
-	public void displaydetails(){
+	public void displayAll(String filename){
 		FileDb movieDb = new FileDb();
-    	movieDb.setDbName("movies");
-    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+		movieDb.setDbName("movies");
+		ArrayList<Map<String, String>> movies = movieDb.readDataBase(filename);
 		String input_title;
 		int detail_choice=0;
 		
@@ -75,7 +75,7 @@ public class ViewDetails {
 	            		System.out.println("Invalid output");
             	
 	            	}
-	            System.out.println("Re-enter choice to continue: ");
+	            System.out.println("Re-enter choice to continue (press 9 to exit): ");
 	            detail_choice = sc5.nextInt();
             	
             	}

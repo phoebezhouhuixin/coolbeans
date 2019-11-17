@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import fileDb.FileDb;
-
-public class Search {
+import General.Viewable;
+public class Search extends Viewable{
 	/**
 	* Displays every movie from database and their respective title and showing status
 	*/
-	public void display(){
+	public void displayAll(String filename){
 		FileDb movieDb = new FileDb();
-    	movieDb.setDbName("movies");
-    	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
+		movieDb.setDbName("movies");
+		ArrayList<Map<String, String>> movies = movieDb.readDataBase(filename);
 		System.out.println("The movies featured in cineplex are: ");
 		System.out.println(String.format("    %7s %20s", "Movie Name", "Showing Status"));
 		Integer counter2 = 1;

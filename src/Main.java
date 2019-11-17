@@ -223,7 +223,7 @@ public class Main {
 				if (choice == 2) {
 
 					ViewHistory vh = new ViewHistory();
-					vh.view(username, password);
+					vh.displayAll("history", username, password);
 
 				} else if (choice == 3) {
 					String movie_to_review;
@@ -251,12 +251,12 @@ public class Main {
 					switch (subchoice) {
 						case 1: 
 							Search s = new Search();
-							s.display();
+							s.displayAll("movies");
 							break;
 
 						case 2: 
 							ViewDetails v = new ViewDetails();
-							v.displaydetails();
+							v.displayAll("movies");
 							break;
 						case 3: // start booking
 							// step 1: choose the movie
@@ -328,7 +328,7 @@ public class Main {
 								FileDb history = new FileDb();
 								history.setDbName("history");
 								String[] record = new String[]{username, password, t.name, t.phNo, t.email,
-										t.cinemaType.getCinemaTypeName(), moviechoice, t.movieType.getMovieTypeName(), t.ageType.getAgeName(),
+										t.cinemaType.getCinemaTypeName(), t.movieTitle, t.movieType.getMovieTypeName(), t.ageType.getAgeName(),
 										t.dayType.getDayName(), t.getTicketPrice().toString(), t.transactionID};
 								System.out.println("Thank you for booking! You are watching:");
 								System.out.println(selectedShow.get("movieTitle"));
