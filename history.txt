@@ -1,4 +1,7 @@
-username, password, name, phNo, email, cinemaType, movieType, ageType, dayType, price, txnId
-r,r,phoebe,98431234,pb@gmail.com,Silver,2D,Senior,Weekday,11.0,GV 201911151053
-r,r,phoebe,98431234,pb@gmail.com,Silver,2D,Adult,Weekend,14.0,GV 201911151055
-r,r,rohanBeans,4343434343,rohan1G@g.com,Gold,3D,Student,Weekend,13.0,GV 201911152231
+username, password, name, phNo, email, cinemaType,movie, movieType, ageType, dayType, price, txnId
+r,r,phoebe,98431234,pb@gmail.com,Silver,Up,2D,Senior,Weekday,11.0,GV 201911151053
+r,r,phoebe,98431234,pb@gmail.com,Silver,Up,2D,Adult,Weekend,14.0,GV 201911151055
+r,r,rohanBeans,4343434343,rohan1G@g.com,Gold,Up,3D,Student,Weekend,13.0,GV 201911152231
+r,r,rohan,2345,rohan@gmail.com,Gold,Up,3D,Student,Weekday,13.0,GV 201911162319
+r,r,rohan,234,rohan@hmail.com,Silver,Toy Story,2D,Student,Holiday,16.0,GV 201911162340
+r,r,rohan,2334,rohan@gmail.com,Silver,Toy Story,2D,Student,Weekday,14.0,GV 201911162341

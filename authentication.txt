@@ -3,5 +3,5 @@ moviegoer, rohan, beans
 moviegoer, r,b
 moviegoer, r,r
 moviegoer, g,g
-staff, bob, pass
+staff, staff1, pass
 staff, s,s

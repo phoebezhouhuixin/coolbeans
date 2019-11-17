@@ -1,5 +1,5 @@
 title, synopsis, director, language, type, PGrating, status, overallRating, cast
-Up, The house flies, Karen, Malay, 3D, PG, Now Showing, 4.5, {Wilson. Wang. Wilfred.}
-Toy Story,The toys are alive,Bala,English,2D,PG,Now Showing, 4.9, {Alice. Bob. Daniel.}
-Cars 2,The car moves,Anderson,English,2D,PG,Now Showing,4.0,{Tom. Dick. Harry.}
-beans 2,beans attack,me,tamil,Blockbuster,R,End of showing,0.0,r;
+Toy Story,The toys are alive,Bala,English,2D,PG,Now Showing, 4.9, Alice;Bob;Daniel;
+Cars 2,The car moves,Anderson,English,2D,PG,Now Showing,4.0,Tom;Dick;Harry;
+Frozen,story about a kid,alen,english,2D,G,End of showing,0.0,rob;
+Up,The house flies,Karen,Malay,3D,PG,Now Showing,3.0,Wilson;Wang;Wilfred;

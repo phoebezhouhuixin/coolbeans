@@ -274,6 +274,7 @@ public class Main {
 							}
 
 							moviechoice = allMovies.get(sc2.nextInt() - 1).getTitle();
+//							System.out.println("movie is "+ moviechoice);
 
 							// find the available cineplexes for that movie, using showtimes.txt
 							FileDb showtimesDb = new FileDb();
@@ -327,7 +328,7 @@ public class Main {
 								FileDb history = new FileDb();
 								history.setDbName("history");
 								String[] record = new String[]{username, password, t.name, t.phNo, t.email,
-										t.cinemaType.getCinemaTypeName(), t.movieType.getMovieTypeName(), t.ageType.getAgeName(),
+										t.cinemaType.getCinemaTypeName(), moviechoice, t.movieType.getMovieTypeName(), t.ageType.getAgeName(),
 										t.dayType.getDayName(), t.getTicketPrice().toString(), t.transactionID};
 								System.out.println("Thank you for booking! You are watching:");
 								System.out.println(selectedShow.get("movieTitle"));

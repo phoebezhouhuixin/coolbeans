@@ -61,7 +61,7 @@ public class Ticket {
 		c = new Cineplex(selectedShow.get("cineplex"));
 		ageType = getAgeType();
 
-		ticketPrice = cinemaPriceMap.get(cinemaType) + moviePriceMap.get(movieType) - agePriceMap.get(ageType);
+		ticketPrice = cinemaPriceMap.get(cinemaType) + moviePriceMap.get(movieType) - agePriceMap.get(ageType) + dayPriceMap.get(dayType) ;
 
 		sc.nextLine(); //clearing scanner's input buffer
 

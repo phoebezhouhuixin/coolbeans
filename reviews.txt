@@ -4,3 +4,8 @@ dabang,3,"yum"
 eew,3,"amazing"
 eew,2,"lit"
 Cars,4,it was ok-ok
+Up,3,"amazing"
+Toy,2,"amamzing"
+Up,2,"amazing"
+Cars,2,"wow"
+Up,4,"amazing"

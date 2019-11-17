@@ -1,11 +1,8 @@
 movieTitle, cineplex, movieType, cinemaType, day, time, dayType
-Cars, GV Katong, 2D, Silver, Sunday, 9am, Weekend
-Cars, GV Tampines, 2D, Gold, Saturday, 9am, Weekend
-Toy Story, GV Katong, 2D, Silver, Friday, 9am, Weekday
-Toy Story, GV Tampines, 2D, Silver, Friday, 3pm, Weekday
 Toy Story, GV Bugis, 2D, Silver, Monday, 7pm, Weekday
-Up, GV Katong, 3D, Gold, Tuesday, 7pm, Weekday
 Up, GV Tampines, 3D, Gold, Saturday, 3pm, Weekend
 Up, GV Bugis, 3D, Platinum, Wednesday, 3pm, Weekday
-Up,GV Bugis,2D,Gold,Tuesday,4pm,Weekend
-Cars,GV Bugis,2D,Platinum,Monday,7pm,Holiday
+Cars 2,GV Bugis,2D,Platinum,Monday,7pm,Holiday
+Up,GV Katong,3D,Gold,Tuesday,7pm,Holiday
+Toy Story,GV Katong,3D,Gold,Friday,9am,Weekday
+Toy Story,GV Tampines,2D,Silver,Friday,3pm,Holiday

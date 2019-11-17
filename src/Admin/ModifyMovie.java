@@ -189,18 +189,35 @@ public class ModifyMovie {
     			temp_cast = movie.get("cast");
     		}
     	}
+//    	Movie newMovie = new Movie("temp");
+//    	int allMoviePos=0;
+//    	for (int i = 0; i < allMovies.size(); i += 1) {
+//        	System.out.println(allMovies.get(i).getTitle() + "-"+check_by_title);
+//            if (allMovies.get(i).getTitle().equals(check_by_title)) {
+//                newMovie = allMovies.get(i);
+//                allMoviePos=i;
+//            }
+//    	}
     	
-        for (int i = 0; i < allMovies.size(); i += 1) {
-        	System.out.println(allMovies.get(i).getTitle() + "-"+check_by_title);
-            if (allMovies.get(i).getTitle().equals(check_by_title)) {
-                Movie newMovie = allMovies.get(i);
-                String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),StatusEnum.END_SHOWING.toString(), newMovie.getOverallRating().toString(), temp_cast };
+    	for (Map<String,String> movie: moviesData) {
+    		if (check_by_title.equals(movie.get("title"))){
+    			String [] recordToAddToMovieDb = new String[] {movie.get("title"), movie.get("synopsis"), movie.get("director"), movie.get("language"), movie.get("type"), movie.get("PGrating"), StatusEnum.END_SHOWING.toString(), movie.get("overallRating"), temp_cast };
                 movieDb.removeEntry("title", check_by_title);
                 movieDb.addRecord(recordToAddToMovieDb);
-            	allMovies.get(i).setShowingStatus(4);        
-        
-            }
-        }
+    		}
+    	}
+    	
+//        for (int i = 0; i < allMovies.size(); i += 1) {
+//        	System.out.println(allMovies.get(i).getTitle() + "-"+check_by_title);
+//            if (allMovies.get(i).getTitle().equals(check_by_title)) {
+//                Movie newMovie = allMovies.get(i);
+//                String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),StatusEnum.END_SHOWING.toString(), newMovie.getOverallRating().toString(), temp_cast };
+//                movieDb.removeEntry("title", check_by_title);
+//                movieDb.addRecord(recordToAddToMovieDb);
+//            	allMovies.get(i).setShowingStatus(4);        
+//        
+//            }
+//        }
         this.allMovies = allMovies;
     }
 
@@ -240,9 +257,12 @@ public class ModifyMovie {
             			}
             		}
             	}
-            	for (Map<String, String> per_sale : sales_new){
-            		System.out.println(per_sale);
-                }
+            	for (int i = 0; i<5; i+=1) {
+            		System.out.println(sales_new.get(i));
+            	}
+//            	for (Map<String, String> per_sale : sales_new){
+//            		System.out.println(per_sale);
+//                }
             	break;
             case 2:
             	int check2=1;
@@ -256,10 +276,20 @@ public class ModifyMovie {
             			}
             		}
             	}
-            	for (Map<String, String> per_movie : movies){
-            		System.out.println(per_movie.get("title")+"==>"+per_movie.get("overallRating"));
-//                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
+                if (movies.size()<=5) {
+                	for (int i=0;i<movies.size();i++) {
+                		System.out.println(movies.get(i).get("title")+"==>"+movies.get(i).get("overallRating"));
+                	}
                 }
+                else {
+	                for (int i = 0; i<5; i+=1) {
+	                	System.out.println(movies.get(i).get("title")+"==>"+movies.get(i).get("overallRating"));
+	            	}
+                }
+//            	for (Map<String, String> per_movie : movies){
+//            		System.out.println(per_movie.get("title")+"==>"+per_movie.get("overallRating"));
+////                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
+//                }
                 break;
         }
         this.allMovies = allMovies;
