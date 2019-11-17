@@ -1,4 +1,5 @@
 package General;
 
-public class Viewable {
+public abstract class Viewable {
+    public abstract void displayAll(String filename);
 }
