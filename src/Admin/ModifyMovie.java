@@ -131,21 +131,18 @@ public class ModifyMovie {
                         	Movie temp4 = new Movie("temp");
                             temp4.setLanguage();
                             currentRecord[3] = temp4.getLanguage();
-//                            allMovies.get(i).setLanguage();
                             System.out.println("Successfully updated!");
                             break;
                         case 6:
                         	Movie temp5 = new Movie("temp");
                             temp5.setType();
                             currentRecord[4] = temp5.getType().getMovieTypeName();
-//                        	allMovies.get(i).setType();
                             System.out.println("Successfully updated!");
                             break;
                         case 7:
                         	Movie temp6 = new Movie("temp");
                             temp6.setPGrating();
                             currentRecord[5] = temp6.getPGrating();
-//                        	allMovies.get(i).setPGrating();;
                             System.out.println("Successfully updated!");
                             break;
                         default:
@@ -189,15 +186,6 @@ public class ModifyMovie {
     			temp_cast = movie.get("cast");
     		}
     	}
-//    	Movie newMovie = new Movie("temp");
-//    	int allMoviePos=0;
-//    	for (int i = 0; i < allMovies.size(); i += 1) {
-//        	System.out.println(allMovies.get(i).getTitle() + "-"+check_by_title);
-//            if (allMovies.get(i).getTitle().equals(check_by_title)) {
-//                newMovie = allMovies.get(i);
-//                allMoviePos=i;
-//            }
-//    	}
     	
     	for (Map<String,String> movie: moviesData) {
     		if (check_by_title.equals(movie.get("title"))){
@@ -206,18 +194,6 @@ public class ModifyMovie {
                 movieDb.addRecord(recordToAddToMovieDb);
     		}
     	}
-    	
-//        for (int i = 0; i < allMovies.size(); i += 1) {
-//        	System.out.println(allMovies.get(i).getTitle() + "-"+check_by_title);
-//            if (allMovies.get(i).getTitle().equals(check_by_title)) {
-//                Movie newMovie = allMovies.get(i);
-//                String [] recordToAddToMovieDb = new String[] {newMovie.getTitle(), newMovie.getSynopsis(), newMovie.getDirector(), newMovie.getLanguage(), newMovie.getType().getMovieTypeName(), newMovie.getPGrating(),StatusEnum.END_SHOWING.toString(), newMovie.getOverallRating().toString(), temp_cast };
-//                movieDb.removeEntry("title", check_by_title);
-//                movieDb.addRecord(recordToAddToMovieDb);
-//            	allMovies.get(i).setShowingStatus(4);        
-//        
-//            }
-//        }
         this.allMovies = allMovies;
     }
 
@@ -234,14 +210,9 @@ public class ModifyMovie {
         FileDb movieDb = new FileDb();
     	movieDb.setDbName("movies");
     	ArrayList<Map<String, String>> movies = movieDb.readDataBase("movies");
-    	/*FileDb salesDb = new FileDb();
-    	salesDb.setDbName("sales");
-    	ArrayList<Map<String, String>> sales = salesDb.readDataBase("sales");*/
         switch(display_choice){
             case 1:
-            	int check1=1;
             	Movie obj = new Movie("temp");
-                Map <Double, String> map1 = new HashMap<Double, String>();
             	for (Map<String,String> movie : movies){
                     obj.calcTicketSales(movie.get("title"));
                 }
@@ -260,13 +231,8 @@ public class ModifyMovie {
             	for (int i = 0; i<5; i+=1) {
             		System.out.println(sales_new.get(i));
             	}
-//            	for (Map<String, String> per_sale : sales_new){
-//            		System.out.println(per_sale);
-//                }
             	break;
             case 2:
-            	int check2=1;
-                Map <Double, String> map2 = new HashMap<Double, String>();
                 for(int i=0; i<movies.size(); i++){
             		for(int j=0; j<movies.size()-1; j++){
             			Map<String, String> currentRating = movies.get(j);
@@ -286,10 +252,6 @@ public class ModifyMovie {
 	                	System.out.println(movies.get(i).get("title")+"==>"+movies.get(i).get("overallRating"));
 	            	}
                 }
-//            	for (Map<String, String> per_movie : movies){
-//            		System.out.println(per_movie.get("title")+"==>"+per_movie.get("overallRating"));
-////                    map1.put(Double.parseDouble(per_sale.get("sales")),per_sale.get("title"));
-//                }
                 break;
         }
         this.allMovies = allMovies;
@@ -330,13 +292,10 @@ public class ModifyMovie {
 		int choice = sc2.nextInt();
 		sc2.nextLine();
 		Map<String, String> toModify = showtimesData.get(choice);
-		//TODO : get user input for these
 		System.out.println("Enter attribute you would like to modify: ");
 		String colName = sc2.nextLine();
 		System.out.println("Enter new value of attribute: ");
 		String changeTo = sc2.nextLine();
-//		String colName = "dayType";
-//		String changeTo = "PublicHoliday";
 		
 		toModify.remove(colName);
 		toModify.put(colName, changeTo);

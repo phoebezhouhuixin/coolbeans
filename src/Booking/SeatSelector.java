@@ -71,7 +71,6 @@ public class SeatSelector {
 	 * @return
 	 */
 	public String getSelectedSeat() {
-		// TODO : add functionality of selecting multiple seats (if required)
 		while (true) {
 			showSeats();			
 			System.out.println("Enter seat choice");

@@ -8,8 +8,9 @@ import fileDb.FileDb;
 import General.Viewable;
 public class Search extends Viewable{
 	/**
-	* Displays every movie from database and their respective title and showing status
-	*/
+	 * Displays every movie from database and their respective title and showing status
+	 * @param filename Display information from this file
+	 */
 	public void displayAll(String filename){
 		FileDb movieDb = new FileDb();
 		movieDb.setDbName("movies");

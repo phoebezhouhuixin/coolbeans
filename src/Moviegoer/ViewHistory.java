@@ -44,15 +44,6 @@ public class ViewHistory extends ViewableWithAuth{
 	public void leaveReview(String movieTitle){
 		String user_review;
 		Integer user_rating;
-		/*if (allMovies==null)
-			System.out.println("No movies");
-        for (Movie aMovie : allMovies){ // i.e. "for movie in the arraylist of all movies"
-            if (aMovie.getTitle().equals(movieTitle)) {
-            	System.out.println("Movie found");
-                aMovie.getReviewArray().add(new Review());
-                return;
-            }
-        }*/
 		System.out.println("Enter your rating for the movie for an integer value between 0 to 5");
 		user_rating = sc8.nextInt();
 		sc8.nextLine();

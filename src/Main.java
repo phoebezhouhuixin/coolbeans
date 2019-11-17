@@ -24,8 +24,6 @@ import Booking.Ticket;
 //fileDb import
 import fileDb.FileDb;
 
-// TODO : close all the scanner objs
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -39,8 +37,6 @@ public class Main {
 		FileDb moviesDb = new FileDb();
 		moviesDb.setDbName("movies");
 		ArrayList<Map<String, String>> moviesData = moviesDb.readDataBase("movies");
-		// TODO: add the movies from the movies.txt file into the ArrayList
-		// TODO: add an array for Reviews and for Cast
 		for (Map<String, String> theMovie : moviesData) {
 			allMovies.add(new Movie(theMovie.get("title"), theMovie.get("synopsis"),
 					theMovie.get("director"), theMovie.get("language"), theMovie.get("type"),
@@ -71,7 +67,6 @@ public class Main {
 		dayPriceMap.put(DayTypes.HOLIDAY, 6.00);
 
 
-//		Scanner sc = new Scanner(System.in);
 		Login login = new Login();
 		login.setusername();
 		login.setpassword();
@@ -102,11 +97,9 @@ public class Main {
 		if (auth == false) {
 			System.out.println("Invalid username and/or password :( Try again");
 		}
-//		sc.close();
 
 		if (staff == true && auth) {
 			Scanner sc1 = new Scanner(System.in);
-			// assuming staff
 			int choice1 = 0, choice2 = 0, choice3 = 0, choice4 =0;
 			ModifyMovie modify = new ModifyMovie(allMovies);
 			TicketPrice tp = new TicketPrice();
@@ -208,7 +201,6 @@ public class Main {
 
 		if (staff == false && auth) {
 			Scanner sc2 = new Scanner(System.in);
-			// assuming it's the moviegoer
 			/*
 			 * Moviegoer 1. Book movie (movie -> cineplex -> cinema -> details[day, time] ->
 			 * seat -> enter personal details -> confirmation[add movie to db for history
@@ -301,7 +293,6 @@ public class Main {
 							i = 1;
 							System.out.println("Select an option number");
 							System.out.format("%12s%12s%12s%12s%12s%12s%12s%12s%n", " ", "Day type", "Movie type", "Cinema type", "Cineplex", "Time", "Movie title", "Day");
-							//System.out.println("\t Movie title \t Cineplex \t Movie type \t Cinema type \t Day \t Time \t Day type ");
 							for (Map<String, String> theShow : relevantData) {
 								System.out.printf("%9s %d:", "Movie", i);
 								for (Map.Entry<String, String> entry : theShow.entrySet()) {
